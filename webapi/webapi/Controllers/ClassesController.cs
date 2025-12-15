@@ -9,6 +9,8 @@ namespace webapi.Controllers
     public class ClassesController : ApiController
     {
         onlineQuranTutorEntities4 _context = new onlineQuranTutorEntities4();
+
+
         [HttpPost]
         public HttpResponseMessage updateClass(UpdateClass classDTO)
         {
@@ -21,6 +23,48 @@ namespace webapi.Controllers
             classData.corrections = classDTO.corrections;
             _context.SaveChanges();
             return Request.CreateResponse(HttpStatusCode.OK, new { message = "updated successfully" });
+        }
+
+
+        [HttpGet]
+        public HttpResponseMessage getclassesDataByID(int classid)
+        {
+            if (classid <= 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest,
+                    new
+                    {
+                        message = "Invalid Data",
+                    });
+            }
+            var result = (
+    from c in _context.Classes
+    where c.classID == classid
+    select new
+    {
+        c.classID,
+        c.classDate,
+        c.status,
+        c.corrections,
+        Ayats = (
+            from l in _context.Lessons
+            join q in _context.Qurans on l.Quran.ID equals q.ID
+            where l.LessonPlan.lessonPlanID == c.LessonPlan.lessonPlanID
+            select new
+            {
+                q.ID,
+                q.AyahText
+            }
+        ).ToList()
+    }
+).FirstOrDefault();
+
+            return Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                data = result,
+                totalAyat = result.Ayats.Count,
+                message = "Data Collected Successfully"
+            });
         }
     }
 }

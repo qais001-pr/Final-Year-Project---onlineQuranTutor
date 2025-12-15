@@ -105,24 +105,38 @@ namespace webapi.Controllers
 
 
 
-
         [HttpPost]
         public HttpResponseMessage CreateClassesWeeklySimple(AcceptRequestFromTutorDTO request)
         {
-            var student = _context.Students.Where(s => s.studentID == request.studentID).FirstOrDefault();
-            var tutor = _context.Tutors.Where(t => t.tutorID == request.tutorID).FirstOrDefault();
-            var subject = _context.Subjects.Where(s => s.subjectID == request.subjectID).FirstOrDefault();
-            var studentRequest = _context.StudentTutorRequests.Where(r => r.RequestID == request.requestID).FirstOrDefault();
+            var student = _context.Students.FirstOrDefault(s => s.studentID == request.studentID);
+            var tutor = _context.Tutors.FirstOrDefault(t => t.tutorID == request.tutorID);
+            var subject = _context.Subjects.FirstOrDefault(s => s.subjectID == request.subjectID);
+            var studentRequest = _context.StudentTutorRequests
+                .FirstOrDefault(r => r.RequestID == request.requestID);
 
             if (student == null || tutor == null || subject == null || studentRequest == null)
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Invalid request data" });
+            {
+                return Request.CreateResponse(
+                    HttpStatusCode.BadRequest,
+                    new { message = "Invalid request data" }
+                );
+            }
 
-            var lessons = _context.Lessons
-                .Where(l => l.Subject.subjectID == request.subjectID && l.surah.Id == request.surahID)
+            var lessonPlans = _context.Lessons
+                .Where(l => l.surah.Id == request.surahID
+                         && l.Subject.subjectID == request.subjectID)
+                .Select(l => l.LessonPlan)
+                .Distinct()
+                .OrderBy(lp => lp.lessonPlanID)
                 .ToList();
 
-            if (!lessons.Any())
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "No lessons found" });
+            if (!lessonPlans.Any())
+            {
+                return Request.CreateResponse(
+                    HttpStatusCode.BadRequest,
+                    new { message = "No lesson plans found for this Surah" }
+                );
+            }
 
             var matchingSlots = (from ts in _context.TutorSlots
                                  join ss in _context.StudentSlots
@@ -133,53 +147,52 @@ namespace webapi.Controllers
                                        && ts.status == "available"
                                  select ts).ToList();
 
-
             if (!matchingSlots.Any())
-                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "No matching slots available" });
+            {
+                return Request.CreateResponse(
+                    HttpStatusCode.BadRequest,
+                    new { message = "No matching slots available" }
+                );
+            }
 
-            
-            
-            
             List<DateTime> slotStartDates = new List<DateTime>();
 
             foreach (var slot in matchingSlots)
             {
                 if (!Enum.TryParse(slot.Day.dayName, true, out DayOfWeek dayOfWeek))
+                {
                     return Request.CreateResponse(
                         HttpStatusCode.BadRequest,
                         new { message = $"Invalid day name: {slot.Day.dayName}" }
                     );
+                }
 
                 slotStartDates.Add(GetNextDateForDay(dayOfWeek));
             }
 
-            
-            
-            List<int> slotWeekCounters = Enumerable.Repeat(0, matchingSlots.Count).ToList();
+            List<int> slotWeekCounters =
+                Enumerable.Repeat(0, matchingSlots.Count).ToList();
 
-            
             var classesToAdd = new List<Class>();
-          
-            
-            
             int slotIndex = 0;
 
-            foreach (var lesson in lessons)
+            foreach (var lessonPlan in lessonPlans)
             {
                 int currentSlotIndex = slotIndex % matchingSlots.Count;
-
                 var slot = matchingSlots[currentSlotIndex];
+
                 DateTime classDate =
-                    slotStartDates[currentSlotIndex].AddDays(slotWeekCounters[currentSlotIndex] * 7);
+                    slotStartDates[currentSlotIndex]
+                        .AddDays(slotWeekCounters[currentSlotIndex] * 7);
 
                 classesToAdd.Add(new Class
                 {
                     Student = student,
                     Tutor = tutor,
+                    Subject = subject,
                     Slot = slot.Slot,
                     Day = slot.Day,
-                    Subject = subject,
-                    LessonPlan = lesson.LessonPlan,
+                    LessonPlan = lessonPlan,
                     StudentTutorRequest = studentRequest,
                     status = "pending",
                     corrections = 0,
@@ -188,7 +201,6 @@ namespace webapi.Controllers
                 });
 
                 slotWeekCounters[currentSlotIndex]++;
-
                 slotIndex++;
             }
 
@@ -201,7 +213,8 @@ namespace webapi.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, new
             {
-                message = "Classes created successfully (weekly, Monday start)"
+                message = "Classes created successfully based on lesson plans",
+                totalClasses = classesToAdd.Count
             });
         }
 

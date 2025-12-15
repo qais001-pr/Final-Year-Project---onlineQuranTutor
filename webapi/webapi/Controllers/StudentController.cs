@@ -135,7 +135,111 @@ namespace webapi.Controllers
         }
 
 
+        [HttpGet]
 
+        public HttpResponseMessage getClassesByID(int id)
+        {
 
+            if (id <= 0)
+            {
+                return Request.CreateResponse();
+            }
+            var classes = (from c in _context.Classes
+                           join sub in _context.Subjects on c.Subject.subjectID equals sub.subjectID
+                           join t in _context.Tutors on c.Tutor.tutorID equals t.tutorID
+                           join sl in _context.Slots on c.Slot.slotID equals sl.slotID
+                           join u in _context.Users on t.User.userID equals u.userID
+                           join st in _context.Students on c.Student.studentID equals st.studentID
+                           join uu in _context.Users on st.User.userID equals uu.userID
+                           join d in _context.Days on c.Day.dayID equals d.dayID
+                           where c.Student.studentID == id
+                           orderby c.classDate ascending
+                           select new
+                           {
+                               classID = c.classID,
+                               tutorID = t.tutorID,
+                               name = u.name,
+                               profilepicture = u.profilePicture,
+                               status = c.status,
+                               subjectName = sub.subjectName,
+                               subject = sub.subjectID,
+                               startTime = sl.startTime,
+                               endTime = sl.endTime,
+                               TimeZone = uu.timezone,
+                               DayName = d.dayName
+                           }).ToList();
+
+            if (classes == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK,
+              new
+              {
+                  message = "Classes Not Found"
+              });
+            }
+            return Request.CreateResponse(HttpStatusCode.OK,
+                new
+                {
+                    data = classes,
+                    totalClasses = classes.Count,
+                    message = "Data Collected Successfully"
+                });
+        }
+
+        [HttpGet]
+
+        public HttpResponseMessage getClassesByIDWithDayID(StudentDTOSearch stt)
+        {
+            if (stt.dayid <= 0 || stt.studentid <= 0)
+            {
+                return Request.CreateResponse();
+            }
+            var classes = (from c in _context.Classes
+                           join sub in _context.Subjects on c.Subject.subjectID equals sub.subjectID
+                           join t in _context.Tutors on c.Tutor.tutorID equals t.tutorID
+                           join sl in _context.Slots on c.Slot.slotID equals sl.slotID
+                           join u in _context.Users on t.User.userID equals u.userID
+                           join st in _context.Students on c.Student.studentID equals st.studentID
+                           join uu in _context.Users on st.User.userID equals uu.userID
+                           join d in _context.Days on c.Day.dayID equals d.dayID
+                           where c.Student.studentID == st.studentID && c.Day.dayID == stt.dayid
+                           orderby c.classDate ascending
+                           select new
+                           {
+                               classID = c.classID,
+                               tutorID = t.tutorID,
+                               name = u.name,
+                               profilepicture = u.profilePicture,
+                               status = c.status,
+                               subjectName = sub.subjectName,
+                               subject = sub.subjectID,
+                               startTime = sl.startTime,
+                               endTime = sl.endTime,
+                               TimeZone = uu.timezone,
+                               DayName = d.dayName,
+                           }).ToList();
+
+            if (classes == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK,
+              new
+              {
+                  message = "Classes Not Found"
+              });
+            }
+            return Request.CreateResponse(HttpStatusCode.OK,
+                new
+                {
+                    data = classes,
+                    totalClasses = classes.Count,
+                    message = "Data Collected Successfully"
+                });
+        }
+
+    }
+    public class StudentDTOSearch
+    {
+        public int studentid { get; set; }
+        public int dayid { get; set; }
     }
 }

@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|c:\\users\\admin\\desktop\\onlinequrantutor\\webapi\\webapi\\controllers\\tutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\tutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|c:\\users\\admin\\desktop\\onlinequrantutor\\webapi\\webapi\\controllers\\classescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\classescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|c:\\users\\admin\\desktop\\onlinequrantutor\\webapi\\webapi\\models\\tutorslots.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\models\\tutorslots.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|c:\\users\\admin\\desktop\\onlinequrantutor\\webapi\\webapi\\controllers\\studentrequeststutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\studentrequeststutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|c:\\users\\admin\\desktop\\onlinequrantutor\\webapi\\webapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\models\\signupuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\models\\signupuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\controllers\\tutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\tutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +34,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TutorSlots.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Models\\TutorSlots.cs",
-              "RelativeDocumentMoniker": "webapi\\Models\\TutorSlots.cs",
-              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Models\\TutorSlots.cs",
-              "RelativeToolTip": "webapi\\Models\\TutorSlots.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ClassesController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\ClassesController.cs",
+              "RelativeDocumentMoniker": "webapi\\Controllers\\ClassesController.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\ClassesController.cs",
+              "RelativeToolTip": "webapi\\Controllers\\ClassesController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowC8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T13:24:35.525Z",
+              "WhenOpened": "2025-12-15T02:41:05.091Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "StudentRequestsTutorController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\StudentRequestsTutorController.cs",
+              "RelativeDocumentMoniker": "webapi\\Controllers\\StudentRequestsTutorController.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\StudentRequestsTutorController.cs",
+              "RelativeToolTip": "webapi\\Controllers\\StudentRequestsTutorController.cs",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAmwM4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T02:17:10.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "webapi\\Controllers\\StudentController.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "webapi\\Controllers\\StudentController.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAiwOkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T14:42:37.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SignUpUser.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Models\\SignUpUser.cs",
+              "RelativeDocumentMoniker": "webapi\\Models\\SignUpUser.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Models\\SignUpUser.cs",
+              "RelativeToolTip": "webapi\\Models\\SignUpUser.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwA8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T13:33:53.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "webapi\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "webapi\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAgwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T13:32:05.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "TutorController.cs",
               "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\TutorController.cs",
               "RelativeDocumentMoniker": "webapi\\Controllers\\TutorController.cs",
               "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\TutorController.cs",
               "RelativeToolTip": "webapi\\Controllers\\TutorController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAzwMoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAewLIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T13:23:42.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-13T13:23:42.134Z"
             }
           ]
         }
