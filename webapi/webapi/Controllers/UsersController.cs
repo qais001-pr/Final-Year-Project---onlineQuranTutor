@@ -100,7 +100,7 @@ namespace webapi.Controllers
 
             _context.Users.Add(newUser);
             _context.SaveChanges();
-            if (user.userType.Equals("Guardian", StringComparison.OrdinalIgnoreCase))
+            if (user.userType.Equals("Guardian"))
             {
                 var us = _context.Users.FirstOrDefault(u => u.email == newUser.email);
                 _context.Guardians.Add(new Guardian
@@ -133,7 +133,7 @@ namespace webapi.Controllers
                         data = registereduser,
                     });
             }
-            if (user.userType.Equals("Tutor", StringComparison.OrdinalIgnoreCase) &&
+            if (user.userType.Equals("Tutor") &&
                 user.tutorSubjects != null &&
                 user.tutorSubjects.Count > 0)
             {
@@ -181,6 +181,33 @@ namespace webapi.Controllers
                     HttpStatusCode.OK, new
                     {
                         message = "Tutor added successfully",
+                        data = registereduser,
+                    });
+            }
+            if (user.userType.Equals("Student"))
+            {
+                var us = _context.Users.FirstOrDefault(u => u.email == newUser.email);
+                _context.SaveChanges();
+                var registereduser = from u in _context.Users
+                                     where u.email == newUser.email
+                                     select new
+                                     {
+                                         u.userID,
+                                         u.name,
+                                         u.gender,
+                                         u.dateOfBirth,
+                                         u.email,
+                                         u.password,
+                                         u.country,
+                                         u.city,
+                                         u.timezone,
+                                         u.profilePicture,
+                                     };
+                return Request.CreateResponse(
+                    HttpStatusCode.OK, new
+                    {
+
+                        message = "Student added successfully",
                         data = registereduser,
                     });
             }

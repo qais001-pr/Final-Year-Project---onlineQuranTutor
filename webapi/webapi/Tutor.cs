@@ -17,7 +17,6 @@ namespace webapi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tutor()
         {
-            this.Certificates = new HashSet<Certificate>();
             this.Classes = new HashSet<Class>();
             this.StudentTutorRequests = new HashSet<StudentTutorRequest>();
             this.TutorSlots = new HashSet<TutorSlot>();
@@ -27,8 +26,6 @@ namespace webapi
         public int tutorID { get; set; }
         public string about { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Certificate> Certificates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Classes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

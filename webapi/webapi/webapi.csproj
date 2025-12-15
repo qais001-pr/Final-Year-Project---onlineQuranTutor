@@ -111,9 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Certificate.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Child.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

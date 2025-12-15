@@ -15,20 +15,13 @@ namespace webapi.Controllers
         [HttpPost]
         public HttpResponseMessage addChild()
         {
-
-
-
-
-
-
-
             var request = HttpContext.Current.Request;
 
-            var json = request.Form["student"];
+            var json = request.Form["child"];
 
 
             if (string.IsNullOrEmpty(json))
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Student JSON missing");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Child JSON missing");
 
             ChildDTO childdata = JsonConvert.DeserializeObject<ChildDTO>(json);
 
@@ -45,7 +38,7 @@ namespace webapi.Controllers
 
             if (request.Files.Count > 0)
             {
-                var postedFile = request.Files[0];
+                var postedFile = request.Files["image"];
 
                 if (postedFile != null && postedFile.ContentLength > 0)
                 {
@@ -133,5 +126,76 @@ namespace webapi.Controllers
                 message = "Guardian login successful"
             });
         }
+
+
+        [HttpPost]
+        public HttpResponseMessage AddchildSubjectsAndpreferred(ChildDTOSubject childdata)
+        {
+            if (childdata.guardianID <= 0 || childdata.userid <= 0 ||
+                string.IsNullOrEmpty(childdata.preferred_teacher) || childdata.subjectid <= 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new
+                {
+
+                });
+            }
+            var guardian = from u in _context.Users
+                           where u.userID == childdata.userid
+                           select u.userID;
+
+
+
+            _context.Students.Add(new Student()
+            {
+                preferred_teacher = childdata.preferred_teacher,
+                Subject = _context.Subjects.Where(s => s.subjectID == childdata.subjectid).FirstOrDefault(),
+                User = _context.Users.Where(u => u.userID == childdata.userid).FirstOrDefault(),
+                createdAt = DateTime.Now,
+            });
+            _context.SaveChanges();
+            var studentid = _context.Students.Where(s => s.User.userID == childdata.userid)
+                .Select(s => s.studentID).FirstOrDefault();
+
+            _context.Children.Add(new Child()
+            {
+                studentID = studentid,
+                Guardian = _context.Guardians.Where(g => g.guardianID == childdata.guardianID).FirstOrDefault(),
+            });
+            var result =
+                (from st in _context.Students
+                join u in _context.Users on st.User.userID equals u.userID
+                where u.userID == childdata.userid
+                select new
+                {
+                    st.studentID,
+                    u.userID,
+                    u.name,
+                    u.profilePicture,
+                    u.email,
+                    u.timezone,
+                    u.password,
+                    u.city,
+                    u.country,
+                    u.gender,
+                    u.userType,
+                }).FirstOrDefault();
+            _context.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                data = result,
+                message = "Child Added Successfully"
+            });
+        }
     }
+
+    public class ChildDTOSubject
+    {
+        public int guardianID { get; set; }
+        public int userid { get; set; }
+        public string preferred_teacher { get; set; }
+        public int subjectid { get; set; }
+
+    }
+
 }
+

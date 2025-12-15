@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="onlineQuranTutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Certificate">
-    <Key>
-      <PropertyRef Name="certificateID" />
-    </Key>
-    <Property Name="certificateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="title" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="issued_by_department" Type="varchar" MaxLength="200" />
-    <Property Name="tutorID" Type="int" Nullable="false" />
-    <Property Name="createdAt" Type="datetime" />
-    <Property Name="PROFILE" Type="varchar(max)" />
-  </EntityType>
   <EntityType Name="Child">
     <Key>
       <PropertyRef Name="childID" />
@@ -194,20 +183,6 @@
     <Property Name="createdAt" Type="datetime" />
     <Property Name="profilePicture" Type="varchar(max)" />
   </EntityType>
-  <Association Name="FK_Certificate_Tutor">
-    <End Role="Tutor" Type="Self.Tutor" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tutor">
-        <PropertyRef Name="tutorID" />
-      </Principal>
-      <Dependent Role="Certificate">
-        <PropertyRef Name="tutorID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Child_Guardian">
     <End Role="Guardian" Type="Self.Guardian" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -611,7 +586,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="onlineQuranTutorModelStoreContainer">
-    <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Child" EntityType="Self.Child" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
@@ -631,10 +605,6 @@
     <EntitySet Name="TutorSlots" EntityType="Self.TutorSlots" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TutorSubjects" EntityType="Self.TutorSubjects" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Certificate_Tutor" Association="Self.FK_Certificate_Tutor">
-      <End Role="Tutor" EntitySet="Tutor" />
-      <End Role="Certificate" EntitySet="Certificate" />
-    </AssociationSet>
     <AssociationSet Name="FK_Child_Guardian" Association="Self.FK_Child_Guardian">
       <End Role="Guardian" EntitySet="Guardian" />
       <End Role="Child" EntitySet="Child" />

@@ -1,17 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities8">
-    <EntitySetMapping Name="Certificates">
-      <EntityTypeMapping TypeName="onlineQuranTutorModel.Certificate">
-        <MappingFragment StoreEntitySet="Certificate">
-          <ScalarProperty Name="certificateID" ColumnName="certificateID" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="issued_by_department" ColumnName="issued_by_department" />
-          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-          <ScalarProperty Name="PROFILE" ColumnName="PROFILE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+  <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities9">
     <EntitySetMapping Name="Children">
       <EntityTypeMapping TypeName="onlineQuranTutorModel.Child">
         <MappingFragment StoreEntitySet="Child">
@@ -183,14 +172,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_Certificate_Tutor" TypeName="onlineQuranTutorModel.FK_Certificate_Tutor" StoreEntitySet="Certificate">
-      <EndProperty Name="Tutor">
-        <ScalarProperty Name="tutorID" ColumnName="tutorID" />
-      </EndProperty>
-      <EndProperty Name="Certificate">
-        <ScalarProperty Name="certificateID" ColumnName="certificateID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="FK_Child_Guardian" TypeName="onlineQuranTutorModel.FK_Child_Guardian" StoreEntitySet="Child">
       <EndProperty Name="Guardian">
         <ScalarProperty Name="guardianID" ColumnName="guardianID" />

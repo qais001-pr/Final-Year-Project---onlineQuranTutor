@@ -5,17 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="onlineQuranTutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Certificate">
-          <Key>
-            <PropertyRef Name="certificateID" />
-          </Key>
-          <Property Name="certificateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="issued_by_department" Type="varchar" MaxLength="200" />
-          <Property Name="tutorID" Type="int" Nullable="false" />
-          <Property Name="createdAt" Type="datetime" />
-          <Property Name="PROFILE" Type="varchar(max)" />
-        </EntityType>
         <EntityType Name="Child">
           <Key>
             <PropertyRef Name="childID" />
@@ -199,20 +188,6 @@
           <Property Name="createdAt" Type="datetime" />
           <Property Name="profilePicture" Type="varchar(max)" />
         </EntityType>
-        <Association Name="FK_Certificate_Tutor">
-          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tutor">
-              <PropertyRef Name="tutorID" />
-            </Principal>
-            <Dependent Role="Certificate">
-              <PropertyRef Name="tutorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Child_Guardian">
           <End Role="Guardian" Type="Self.Guardian" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -616,7 +591,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="onlineQuranTutorModelStoreContainer">
-          <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Child" EntityType="Self.Child" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
@@ -636,10 +610,6 @@
           <EntitySet Name="TutorSlots" EntityType="Self.TutorSlots" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TutorSubjects" EntityType="Self.TutorSubjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Certificate_Tutor" Association="Self.FK_Certificate_Tutor">
-            <End Role="Tutor" EntitySet="Tutor" />
-            <End Role="Certificate" EntitySet="Certificate" />
-          </AssociationSet>
           <AssociationSet Name="FK_Child_Guardian" Association="Self.FK_Child_Guardian">
             <End Role="Guardian" EntitySet="Guardian" />
             <End Role="Child" EntitySet="Child" />
@@ -770,17 +740,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="onlineQuranTutorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Certificate">
-          <Key>
-            <PropertyRef Name="certificateID" />
-          </Key>
-          <Property Name="certificateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="issued_by_department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="createdAt" Type="DateTime" Precision="3" />
-          <Property Name="PROFILE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tutor" Relationship="Self.FK_Certificate_Tutor" FromRole="Certificate" ToRole="Tutor" />
-        </EntityType>
         <EntityType Name="Child">
           <Key>
             <PropertyRef Name="childID" />
@@ -951,7 +910,6 @@
           </Key>
           <Property Name="tutorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Certificates" Relationship="Self.FK_Certificate_Tutor" FromRole="Tutor" ToRole="Certificate" />
           <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Tutor" FromRole="Tutor" ToRole="Class" />
           <NavigationProperty Name="StudentTutorRequests" Relationship="Self.FK_Tutor_Request" FromRole="Tutor" ToRole="StudentTutorRequests" />
           <NavigationProperty Name="User" Relationship="Self.FK_Tutor_User" FromRole="Tutor" ToRole="Users" />
@@ -996,12 +954,6 @@
           <NavigationProperty Name="Students" Relationship="Self.FK_Student_User" FromRole="Users" ToRole="Student" />
           <NavigationProperty Name="Tutors" Relationship="Self.FK_Tutor_User" FromRole="Users" ToRole="Tutor" />
         </EntityType>
-        <Association Name="FK_Certificate_Tutor">
-          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
-        </Association>
         <Association Name="FK_Child_Guardian">
           <End Role="Guardian" Type="Self.Guardian" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1156,8 +1108,7 @@
           </End>
           <End Role="TutorSubjects" Type="Self.TutorSubject" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="onlineQuranTutorEntities8" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Certificates" EntityType="Self.Certificate" />
+        <EntityContainer Name="onlineQuranTutorEntities9" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Children" EntityType="Self.Child" />
           <EntitySet Name="Classes" EntityType="Self.Class" />
           <EntitySet Name="Days" EntityType="Self.Day" />
@@ -1177,10 +1128,6 @@
           <EntitySet Name="TutorSlots" EntityType="Self.TutorSlot" />
           <EntitySet Name="TutorSubjects" EntityType="Self.TutorSubject" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_Certificate_Tutor" Association="Self.FK_Certificate_Tutor">
-            <End Role="Tutor" EntitySet="Tutors" />
-            <End Role="Certificate" EntitySet="Certificates" />
-          </AssociationSet>
           <AssociationSet Name="FK_Child_Guardian" Association="Self.FK_Child_Guardian">
             <End Role="Guardian" EntitySet="Guardians" />
             <End Role="Child" EntitySet="Children" />
@@ -1311,18 +1258,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities8">
-          <EntitySetMapping Name="Certificates">
-            <EntityTypeMapping TypeName="onlineQuranTutorModel.Certificate">
-              <MappingFragment StoreEntitySet="Certificate">
-                <ScalarProperty Name="certificateID" ColumnName="certificateID" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="issued_by_department" ColumnName="issued_by_department" />
-                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-                <ScalarProperty Name="PROFILE" ColumnName="PROFILE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities9">
           <EntitySetMapping Name="Children">
             <EntityTypeMapping TypeName="onlineQuranTutorModel.Child">
               <MappingFragment StoreEntitySet="Child">
@@ -1494,14 +1430,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK_Certificate_Tutor" TypeName="onlineQuranTutorModel.FK_Certificate_Tutor" StoreEntitySet="Certificate">
-            <EndProperty Name="Tutor">
-              <ScalarProperty Name="tutorID" ColumnName="tutorID" />
-            </EndProperty>
-            <EndProperty Name="Certificate">
-              <ScalarProperty Name="certificateID" ColumnName="certificateID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Child_Guardian" TypeName="onlineQuranTutorModel.FK_Child_Guardian" StoreEntitySet="Child">
             <EndProperty Name="Guardian">
               <ScalarProperty Name="guardianID" ColumnName="guardianID" />

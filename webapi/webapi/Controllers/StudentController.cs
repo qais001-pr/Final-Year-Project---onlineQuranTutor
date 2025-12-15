@@ -111,7 +111,7 @@ namespace webapi.Controllers
                             on ts.Day.dayID equals d.dayID
                         join u in _context.Users
                             on t.User.userID equals u.userID
-                        where s.studentID == studentid
+                        where s.studentID == studentid && s.preferred_teacher.ToLower() == t.User.gender.ToLower()
                               && ts.status == "available"
                         select new
                         {
