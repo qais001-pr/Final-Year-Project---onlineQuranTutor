@@ -80,7 +80,6 @@ namespace webapi.Controllers
 
             switch (user.userType.ToLower())
             {
-                // ================= STUDENT =================
                 case "student":
                     {
                         var result = (from u in _context.Users
@@ -105,7 +104,6 @@ namespace webapi.Controllers
                         return Request.CreateResponse(HttpStatusCode.OK, new { data = result });
                     }
 
-                // ================= GUARDIAN =================
                 case "guardian":
                     {
                         var result = (from u in _context.Users
@@ -143,7 +141,6 @@ namespace webapi.Controllers
                         return Request.CreateResponse(HttpStatusCode.OK, new { data = result });
                     }
 
-                // ================= TUTOR =================
                 case "tutor":
                     {
                         var result = (from u in _context.Users
@@ -165,7 +162,6 @@ namespace webapi.Controllers
                         return Request.CreateResponse(HttpStatusCode.OK, new { data = result });
                     }
 
-                // ================= CHILD =================
                 case "child":
                     {
                         var result = (from u in _context.Users

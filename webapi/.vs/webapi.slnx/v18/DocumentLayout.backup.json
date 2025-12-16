@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\controllers\\studentrequeststutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|c:\\users\\admin\\desktop\\onlinequrantutor\\webapi\\webapi\\controllers\\studentrequeststutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\studentrequeststutorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\controllers\\guardiancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C72446B5-6ABB-4C40-AC73-E7DE1C09BDB6}|webapi\\webapi.csproj|solutionrelative:webapi\\controllers\\guardiancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +22,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GuardianController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\GuardianController.cs",
+              "RelativeDocumentMoniker": "webapi\\Controllers\\GuardianController.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\GuardianController.cs",
+              "RelativeToolTip": "webapi\\Controllers\\GuardianController.cs",
+              "ViewState": "AgIAAJsAAACAKsLTJAUhwIMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T10:47:41.514Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,10 +44,22 @@
               "RelativeDocumentMoniker": "webapi\\Controllers\\StudentRequestsTutorController.cs",
               "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\StudentRequestsTutorController.cs",
               "RelativeToolTip": "webapi\\Controllers\\StudentRequestsTutorController.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAAAmwLQAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T02:17:10.053Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "webapi\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\onlineQuranTutor\\webapi\\webapi\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "webapi\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T10:49:06.458Z"
             }
           ]
         }
