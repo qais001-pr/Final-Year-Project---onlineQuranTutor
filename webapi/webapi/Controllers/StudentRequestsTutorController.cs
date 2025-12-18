@@ -113,6 +113,8 @@ namespace webapi.Controllers
                 try
                 {
                     var student = _context.Students.FirstOrDefault(s => s.studentID == request.studentID);
+
+
                     var tutor = _context.Tutors.FirstOrDefault(t => t.tutorID == request.tutorID);
                     var subject = _context.Subjects.FirstOrDefault(s => s.subjectID == request.subjectID);
                     var studentRequest = _context.StudentTutorRequests
@@ -123,14 +125,6 @@ namespace webapi.Controllers
                         return Request.CreateResponse(
                             HttpStatusCode.BadRequest,
                             new { message = "Invalid request data" }
-                        );
-                    }
-
-                    if (studentRequest.status == "Accepted")
-                    {
-                        return Request.CreateResponse(
-                            HttpStatusCode.BadRequest,
-                            new { message = "Request already accepted" }
                         );
                     }
 
@@ -160,6 +154,9 @@ namespace webapi.Controllers
                               && ts.status == "available"
                         select ts
                     ).ToList();
+
+
+
 
                     if (!matchingSlots.Any())
                     {

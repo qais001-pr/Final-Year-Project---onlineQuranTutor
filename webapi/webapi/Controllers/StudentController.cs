@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,7 +14,8 @@ namespace webapi.Controllers
         [HttpPost]
         public HttpResponseMessage addChildSubjects(StudentSubject childSubject)
         {
-            if (childSubject.subjectid <= 0 || string.IsNullOrWhiteSpace(childSubject.preffered_teachers))
+            if (childSubject.subjectid <= 0 || string.IsNullOrWhiteSpace(childSubject.preffered_teachers)
+                || childSubject.userid <= 0)
             {
                 return Request.CreateResponse(
                     HttpStatusCode.BadRequest, new
@@ -83,56 +85,52 @@ namespace webapi.Controllers
                     message = "Saved Successfully"
                 });
         }
-
         [HttpGet]
-
-        public HttpResponseMessage getAvailableTutors(int studentid)
+        public HttpResponseMessage GetAvailableTutors(int studentId)
         {
-            if (studentid <= 0)
+            if (studentId <= 0)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Invalid Student ID" });
+
+            try
             {
-                return Request.CreateResponse(
-                    HttpStatusCode.OK, new
-                    {
-                        message = "Invalid Data"
-                    });
-            }
-
-            var data = (from s in _context.Students
-                        join sub in _context.TutorSubjects
-                            on s.Subject.subjectID equals sub.Subject.subjectID
-                        join t in _context.Tutors
-                            on sub.Tutor.tutorID equals t.tutorID
-                        join ts in _context.TutorSlots
-                            on t.tutorID equals ts.Tutor.tutorID
-                        join ss in _context.StudentSlots
-                            on new { ts.Slot.slotID, ts.Day.dayID }
-                            equals new { ss.Slot.slotID, ss.Day.dayID }
-                        join d in _context.Days
-                            on ts.Day.dayID equals d.dayID
-                        join u in _context.Users
-                            on t.User.userID equals u.userID
-                        where s.studentID == studentid && s.preferred_teacher.ToLower() == t.User.gender.ToLower()
-                              && ts.status == "available"
-                        select new
-                        {
-                            TutorID = t.tutorID,
-                            Name = u.name,
-                            About = t.about,
-                            Status = ts.status,
-                        })
-             .Distinct()
-             .ToList();
+                var tutors = (from ts in _context.TutorSlots
+                              join ss in _context.StudentSlots
+                                  on new { ts.Slot.slotID, ts.Day.dayID } equals new { slotID = ss.Slot.slotID, dayID = ss.Day.dayID }
+                              join s in _context.Students
+                                  on ss.Student.studentID equals s.studentID
+                              join t in _context.Tutors
+                                  on ts.Tutor.tutorID equals t.tutorID
+                              join u in _context.Users
+                                  on t.User.userID equals u.userID
+                              where ss.Student.studentID == studentId
+                                    && s.preferred_teacher.ToLower() == u.gender.ToLower()
+                                    && ts.status == "available"
+                              select new
+                              {
+                                  t.tutorID,
+                                  Name = u.name,
+                                  About = t.about,
+                                  Status = ts.status,
+                              })
+              .Distinct()
+              .ToList();
 
 
-
-            return Request.CreateResponse(
-                HttpStatusCode.OK, new
+                return Request.CreateResponse(HttpStatusCode.OK, new
                 {
-                    data = data,
-                    message = "Data"
+                    data = tutors,
+                    count = tutors.Count,
+                    message = "Available Tutors"
                 });
-
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { message = ex.Message });
+            }
         }
+
+
+
 
 
         [HttpGet]
@@ -235,7 +233,7 @@ namespace webapi.Controllers
                     message = "Data Collected Successfully"
                 });
         }
-
+       
     }
     public class StudentDTOSearch
     {

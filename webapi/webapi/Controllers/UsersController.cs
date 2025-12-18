@@ -21,7 +21,7 @@ namespace webapi.Controllers
 
 
             if (string.IsNullOrEmpty(json))
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Student JSON missing");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "User JSON missing");
 
             SignUpUser user = JsonConvert.DeserializeObject<SignUpUser>(json);
 

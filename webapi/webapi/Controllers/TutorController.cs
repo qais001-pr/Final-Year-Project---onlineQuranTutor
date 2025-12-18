@@ -1,9 +1,8 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using webapi.Models;
-using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace webapi.Controllers
 {
@@ -70,7 +69,8 @@ namespace webapi.Controllers
                 });
             }
 
-            var tutor = (from t in _context.Tutors
+            var tutor = (
+                from t in _context.Tutors
                          where t.tutorID == id
                          select new
                          {

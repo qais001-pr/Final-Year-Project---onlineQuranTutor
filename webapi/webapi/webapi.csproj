@@ -121,6 +121,7 @@
     <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\GuardianController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="Controllers\SlotsController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentRequestsTutorController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
@@ -162,7 +163,9 @@
     <Compile Include="Models\Auth.cs" />
     <Compile Include="Models\ChildDTO.cs" />
     <Compile Include="Models\ClassDTO.cs" />
+    <Compile Include="Models\DaySlotsDto.cs" />
     <Compile Include="Models\ReviewDTO.cs" />
+    <Compile Include="Models\SlotDTO.cs" />
     <Compile Include="Models\StudentRequestsTutor.cs" />
     <Compile Include="Models\StudentSlots.cs" />
     <Compile Include="Models\TutorSlots.cs" />
