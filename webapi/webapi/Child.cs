@@ -12,11 +12,11 @@ namespace webapi
     using System;
     using System.Collections.Generic;
     
-    public partial class Child
+    public partial class child
     {
-        public int childID { get; set; }
-        public int studentID { get; set; }
+        public int childrenID { get; set; }
     
-        public virtual Guardian Guardian { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

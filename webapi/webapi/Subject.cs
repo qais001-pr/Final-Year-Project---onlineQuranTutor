@@ -19,8 +19,8 @@ namespace webapi
         {
             this.Classes = new HashSet<Class>();
             this.Lessons = new HashSet<Lesson>();
-            this.Students = new HashSet<Student>();
             this.StudentTutorRequests = new HashSet<StudentTutorRequest>();
+            this.Users = new HashSet<User>();
             this.TutorSubjects = new HashSet<TutorSubject>();
         }
     
@@ -32,9 +32,9 @@ namespace webapi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lesson> Lessons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentTutorRequest> StudentTutorRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
     }

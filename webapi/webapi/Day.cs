@@ -17,7 +17,6 @@ namespace webapi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Day()
         {
-            this.Classes = new HashSet<Class>();
             this.StudentSlots = new HashSet<StudentSlot>();
             this.TutorSlots = new HashSet<TutorSlot>();
         }
@@ -25,8 +24,6 @@ namespace webapi
         public int dayID { get; set; }
         public string dayName { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Class> Classes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentSlot> StudentSlots { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

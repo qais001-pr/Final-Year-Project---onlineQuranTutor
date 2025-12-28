@@ -17,9 +17,16 @@ namespace webapi
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Guardians = new HashSet<Guardian>();
-            this.Students = new HashSet<Student>();
-            this.Tutors = new HashSet<Tutor>();
+            this.Certificates = new HashSet<Certificate>();
+            this.children = new HashSet<child>();
+            this.children1 = new HashSet<child>();
+            this.Classes = new HashSet<Class>();
+            this.Classes1 = new HashSet<Class>();
+            this.StudentSlots = new HashSet<StudentSlot>();
+            this.StudentTutorRequests = new HashSet<StudentTutorRequest>();
+            this.StudentTutorRequests1 = new HashSet<StudentTutorRequest>();
+            this.TutorSlots = new HashSet<TutorSlot>();
+            this.TutorSubjects = new HashSet<TutorSubject>();
         }
     
         public int userID { get; set; }
@@ -32,14 +39,30 @@ namespace webapi
         public string country { get; set; }
         public string city { get; set; }
         public string timezone { get; set; }
-        public Nullable<System.DateTime> createdAt { get; set; }
-        public string profilePicture { get; set; }
+        public string profile { get; set; }
+        public string about { get; set; }
+        public string preferred_tutor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Guardian> Guardians { get; set; }
+        public virtual ICollection<Certificate> Certificates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<child> children { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tutor> Tutors { get; set; }
+        public virtual ICollection<child> children1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Class> Classes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Class> Classes1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentSlot> StudentSlots { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentTutorRequest> StudentTutorRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentTutorRequest> StudentTutorRequests1 { get; set; }
+        public virtual Subject Subject { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TutorSlot> TutorSlots { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TutorSubject> TutorSubjects { get; set; }
     }
 }

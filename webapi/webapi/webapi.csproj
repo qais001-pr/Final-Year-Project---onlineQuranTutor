@@ -111,29 +111,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Child.cs">
+    <Compile Include="Certificate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="child.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="Controllers\ClassesController.cs" />
-    <Compile Include="Controllers\GuardianController.cs" />
-    <Compile Include="Controllers\ReviewController.cs" />
-    <Compile Include="Controllers\SlotsController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
-    <Compile Include="Controllers\StudentRequestsTutorController.cs" />
-    <Compile Include="Controllers\TutorController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\Authorization\AuthController.cs" />
+    <Compile Include="Controllers\Child\ChildrenController.cs" />
+    <Compile Include="Controllers\Guardian\GuardianController.cs" />
+    <Compile Include="Controllers\Student\StudentsController.cs" />
+    <Compile Include="Controllers\Tutor\TutorController.cs" />
     <Compile Include="Day.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Guardian.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Juz.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -159,17 +155,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\AcceptRequestFromTutorDTO.cs" />
-    <Compile Include="Models\Auth.cs" />
-    <Compile Include="Models\ChildDTO.cs" />
-    <Compile Include="Models\ClassDTO.cs" />
-    <Compile Include="Models\DaySlotsDto.cs" />
-    <Compile Include="Models\ReviewDTO.cs" />
-    <Compile Include="Models\SlotDTO.cs" />
-    <Compile Include="Models\StudentRequestsTutor.cs" />
-    <Compile Include="Models\StudentSlots.cs" />
-    <Compile Include="Models\TutorSlots.cs" />
-    <Compile Include="Models\SignUpUser.cs" />
+    <Compile Include="Models\Authorization\Login.cs" />
+    <Compile Include="Models\Authorization\UpdatePass.cs" />
+    <Compile Include="Models\Child\ChildDTO.cs" />
+    <Compile Include="Models\Guardian\GuardianDTO.cs" />
+    <Compile Include="Models\Student\StudentDTO.cs" />
+    <Compile Include="Models\Subject\SubjectDTO.cs" />
+    <Compile Include="Models\Tutor\TutorDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quran.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -178,9 +170,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Slot.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Student.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentSlot.cs">
@@ -193,9 +182,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="surah.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tutor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TutorSlot.cs">
@@ -227,6 +213,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Class\" />
+    <Folder Include="Controllers\Request\" />
+    <Folder Include="Controllers\Reviews\" />
+    <Folder Include="Controllers\Slots\" />
+    <Folder Include="Models\Class\" />
+    <Folder Include="Models\Request\" />
+    <Folder Include="Models\Reviews\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

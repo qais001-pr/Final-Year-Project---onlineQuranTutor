@@ -1,6 +1,0 @@
-insert into Guardian values(2)
-insert into Guardian values(6)
-insert into Guardian Values(10)
-insert into Guardian Values(13)
-insert into Guardian Values(16)
-insert into Guardian Values(20)

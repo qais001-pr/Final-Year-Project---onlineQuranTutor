@@ -16,7 +16,7 @@ namespace webapi
     public partial class onlineQuranTutorEntities4 : DbContext
     {
         public onlineQuranTutorEntities4()
-            : base("name=onlineQuranTutorEntities9")
+            : base("name=onlineQuranTutorEntities12")
         {
         }
     
@@ -25,22 +25,20 @@ namespace webapi
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Child> Children { get; set; }
+        public virtual DbSet<Certificate> Certificates { get; set; }
+        public virtual DbSet<child> children { get; set; }
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<Day> Days { get; set; }
-        public virtual DbSet<Guardian> Guardians { get; set; }
         public virtual DbSet<Juz> Juzs { get; set; }
         public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<LessonPlan> LessonPlans { get; set; }
         public virtual DbSet<Quran> Qurans { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Slot> Slots { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<StudentSlot> StudentSlots { get; set; }
         public virtual DbSet<StudentTutorRequest> StudentTutorRequests { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<surah> surahs { get; set; }
-        public virtual DbSet<Tutor> Tutors { get; set; }
         public virtual DbSet<TutorSlot> TutorSlots { get; set; }
         public virtual DbSet<TutorSubject> TutorSubjects { get; set; }
         public virtual DbSet<User> Users { get; set; }

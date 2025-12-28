@@ -17,6 +17,6 @@ namespace webapi
         public int tutorSubjectID { get; set; }
     
         public virtual Subject Subject { get; set; }
-        public virtual Tutor Tutor { get; set; }
+        public virtual User User { get; set; }
     }
 }

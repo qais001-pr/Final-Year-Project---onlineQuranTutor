@@ -19,6 +19,6 @@ namespace webapi
     
         public virtual Day Day { get; set; }
         public virtual Slot Slot { get; set; }
-        public virtual Tutor Tutor { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -24,12 +24,11 @@ namespace webapi
         public string status { get; set; }
         public Nullable<System.DateTime> createdAt { get; set; }
         public Nullable<System.DateTime> updatedAt { get; set; }
-        public Nullable<int> SurahID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Classes { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual User User { get; set; }
         public virtual Subject Subject { get; set; }
-        public virtual Tutor Tutor { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

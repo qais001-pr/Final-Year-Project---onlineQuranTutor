@@ -20,19 +20,18 @@ namespace webapi
             this.Reviews = new HashSet<Review>();
         }
     
-        public int classID { get; set; }
-        public string status { get; set; }
-        public int corrections { get; set; }
-        public System.DateTime classDate { get; set; }
-        public System.DateTime createdAt { get; set; }
+        public int ClassID { get; set; }
+        public string Status { get; set; }
+        public string Corrections { get; set; }
+        public System.DateTime ClassDate { get; set; }
+        public System.DateTime CreatedAt { get; set; }
     
-        public virtual Day Day { get; set; }
         public virtual LessonPlan LessonPlan { get; set; }
         public virtual Slot Slot { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual User User { get; set; }
         public virtual StudentTutorRequest StudentTutorRequest { get; set; }
         public virtual Subject Subject { get; set; }
-        public virtual Tutor Tutor { get; set; }
+        public virtual User User1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Reviews { get; set; }
     }
