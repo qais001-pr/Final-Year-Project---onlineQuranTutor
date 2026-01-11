@@ -16,7 +16,7 @@ namespace webapi
     public partial class onlineQuranTutorEntities4 : DbContext
     {
         public onlineQuranTutorEntities4()
-            : base("name=onlineQuranTutorEntities12")
+            : base("name=onlineQuranTutorEntities11")
         {
         }
     

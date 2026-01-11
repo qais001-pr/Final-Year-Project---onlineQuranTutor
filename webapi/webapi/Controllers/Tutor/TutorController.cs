@@ -105,5 +105,48 @@ namespace webapi.Controllers.Tutor
                 });
             }
         }
+
+
+
+        [HttpPost]
+        public HttpResponseMessage addTutorSlots(TutorSlots tutorSlot)
+        {
+            if (tutorSlot == null)
+            {
+                return Request.CreateResponse();
+            }
+            _context.TutorSlots.Add(new TutorSlot()
+            {
+                Day = _context.Days.Where(d => d.dayID == tutorSlot.dayid).FirstOrDefault(),
+                Slot = _context.Slots.Where(s => s.slotID == tutorSlot.slotid).FirstOrDefault(),
+                User = _context.Users.Where(u => u.userID == tutorSlot.tutorid).FirstOrDefault(),
+                status = "available",
+            });
+            _context.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK, new { message = "Slot Saved Successfully" });
+        }
+
+
+
+
+
+        [HttpDelete]
+        public HttpResponseMessage removeTutorSlots(TutorSlots tutorSlot)
+        {
+            if (tutorSlot == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var StudentSlots = _context.StudentSlots.Where(s => s.Slot.slotID == tutorSlot.slotid && s.Day.dayID == tutorSlot.dayid &&
+            s.User.userID == tutorSlot.tutorid).FirstOrDefault();
+            if (StudentSlots == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Invalid Request" });
+            }
+
+            _context.StudentSlots.Remove(StudentSlots);
+            _context.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK, new { message = "Slot Saved Successfully" });
+        }
     }
 }

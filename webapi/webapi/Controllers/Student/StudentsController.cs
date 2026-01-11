@@ -81,5 +81,102 @@ namespace webapi.Controllers.Student
                 });
             }
         }
+
+
+        [HttpPost]
+        public HttpResponseMessage addStudentSlots(StudentSlots studentSlot)
+        {
+            if (studentSlot == null)
+            {
+                return Request.CreateResponse();
+            }
+            _context.StudentSlots.Add(new StudentSlot()
+            {
+                Day = _context.Days.Where(d => d.dayID == studentSlot.dayid).FirstOrDefault(),
+                Slot = _context.Slots.Where(s => s.slotID == studentSlot.slotid).FirstOrDefault(),
+                User = _context.Users.Where(u => u.userID == studentSlot.studentid).FirstOrDefault(),
+            });
+            _context.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK, new { message = "Slot Saved Successfully" });
+        }
+
+
+
+
+
+        [HttpPost]
+        public HttpResponseMessage removeStudentSlots(StudentSlots studentSlot)
+        {
+            if (studentSlot == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var StudentSlots = _context.StudentSlots.Where(s => s.Slot.slotID == studentSlot.slotid && s.Day.dayID == studentSlot.dayid &&
+            s.User.userID == studentSlot.studentid).FirstOrDefault();
+            if (StudentSlots == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { message = "Invalid Request" });
+            }
+
+            _context.StudentSlots.Remove(StudentSlots);
+            _context.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK, new { message = "Slot Saved Successfully" });
+        }
+
+
+        [HttpGet]
+        public HttpResponseMessage getAvailableTutorByStudentID(int studentID)
+        {
+            if (studentID <= 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest,
+                    new { success = false, message = "Invalid student ID." });
+            }
+
+            var student = _context.Users
+                        .Where(u => u.userID == studentID)
+                        .Select(s => new
+                        {
+                            subjectID = s.Subject.subjectID,
+                            preferredGender = s.preferred_tutor
+                        })
+                        .FirstOrDefault();
+
+            if (student == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound,
+                    new { success = false, message = "Student not found." });
+            }
+
+            var genderPref = (student.preferredGender ?? "").Trim().ToLower();
+
+            var availableTutors = (from ts in _context.TutorSlots
+                                   join tSub in _context.TutorSubjects on ts.User.userID equals tSub.User.userID
+                                   join u in _context.Users on ts.User.userID equals u.userID
+                                   where
+                                       tSub.Subject.subjectID == student.subjectID
+                                       &&
+                                       (
+                                           genderPref == "male" ? u.gender.ToLower() == "male" :
+                                           genderPref == "female" ? u.gender.ToLower() == "female" :
+                                           true
+                                       )
+                                   select new
+                                   {
+                                       TutorID = u.userID,
+                                       TutorName = u.name,
+                                       TutorGender = u.gender
+                                   })
+                                   .Distinct()
+                                   .ToList();
+
+            return Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                success = true,
+                total = availableTutors.Count,
+                tutors = availableTutors
+            });
+        }
+
     }
 }

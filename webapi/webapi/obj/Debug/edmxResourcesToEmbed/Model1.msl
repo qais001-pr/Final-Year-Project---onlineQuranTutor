@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities12">
+  <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities11">
     <EntitySetMapping Name="Certificates">
       <EntityTypeMapping TypeName="onlineQuranTutorModel.Certificate">
         <MappingFragment StoreEntitySet="Certificate">
@@ -350,6 +350,15 @@
       <EndProperty Name="StudentTutorRequests">
         <ScalarProperty Name="RequestID" ColumnName="RequestID" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_SurahID" TypeName="onlineQuranTutorModel.FK_SurahID" StoreEntitySet="StudentTutorRequests">
+      <EndProperty Name="surahs">
+        <ScalarProperty Name="Id" ColumnName="SurahId" />
+      </EndProperty>
+      <EndProperty Name="StudentTutorRequests">
+        <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="SurahId" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_Tutor_Request" TypeName="onlineQuranTutorModel.FK_Tutor_Request" StoreEntitySet="StudentTutorRequests">
       <EndProperty Name="Users">

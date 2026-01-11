@@ -127,6 +127,7 @@
     <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_StudentRequestTutor" FromRole="StudentTutorRequests" ToRole="Classes" />
     <NavigationProperty Name="User" Relationship="Self.FK_Request_Student" FromRole="StudentTutorRequests" ToRole="Users" />
     <NavigationProperty Name="Subject" Relationship="Self.FK_Request_Subject" FromRole="StudentTutorRequests" ToRole="Subjects" />
+    <NavigationProperty Name="surah" Relationship="Self.FK_SurahID" FromRole="StudentTutorRequests" ToRole="surahs" />
     <NavigationProperty Name="User1" Relationship="Self.FK_Tutor_Request" FromRole="StudentTutorRequests" ToRole="Users" />
   </EntityType>
   <EntityType Name="Subject">
@@ -151,6 +152,7 @@
     <NavigationProperty Name="Juzs" Relationship="Self.FK_Juz_Surah" FromRole="surahs" ToRole="Juz" />
     <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_Surah" FromRole="surahs" ToRole="Lesson" />
     <NavigationProperty Name="Qurans" Relationship="Self.FK_Quran_Surah" FromRole="surahs" ToRole="Quran" />
+    <NavigationProperty Name="StudentTutorRequests" Relationship="Self.FK_SurahID" FromRole="surahs" ToRole="StudentTutorRequests" />
   </EntityType>
   <EntityType Name="TutorSlot">
     <Key>
@@ -295,6 +297,10 @@
     <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
     <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
   </Association>
+  <Association Name="FK_SurahID">
+    <End Role="surahs" Type="Self.surah" Multiplicity="0..1" />
+    <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
+  </Association>
   <Association Name="FK_Tutor_Request">
     <End Role="Users" Type="Self.User" Multiplicity="1" />
     <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
@@ -315,7 +321,7 @@
     <End Role="Users" Type="Self.User" Multiplicity="1" />
     <End Role="TutorSubjects" Type="Self.TutorSubject" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="onlineQuranTutorEntities12" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="onlineQuranTutorEntities11" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Certificates" EntityType="Self.Certificate" />
     <EntitySet Name="children" EntityType="Self.child" />
     <EntitySet Name="Classes" EntityType="Self.Class" />
@@ -427,6 +433,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Request_Subject" Association="Self.FK_Request_Subject">
       <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurahID" Association="Self.FK_SurahID">
+      <End Role="surahs" EntitySet="surahs" />
       <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
     </AssociationSet>
     <AssociationSet Name="FK_Tutor_Request" Association="Self.FK_Tutor_Request">

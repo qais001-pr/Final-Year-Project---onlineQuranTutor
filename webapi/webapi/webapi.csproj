@@ -122,7 +122,10 @@
     </Compile>
     <Compile Include="Controllers\Authorization\AuthController.cs" />
     <Compile Include="Controllers\Child\ChildrenController.cs" />
+    <Compile Include="Controllers\Class\ClassesController.cs" />
     <Compile Include="Controllers\Guardian\GuardianController.cs" />
+    <Compile Include="Controllers\Request\RequestsController.cs" />
+    <Compile Include="Controllers\Slot\SlotsController.cs" />
     <Compile Include="Controllers\Student\StudentsController.cs" />
     <Compile Include="Controllers\Tutor\TutorController.cs" />
     <Compile Include="Day.cs">
@@ -158,10 +161,15 @@
     <Compile Include="Models\Authorization\Login.cs" />
     <Compile Include="Models\Authorization\UpdatePass.cs" />
     <Compile Include="Models\Child\ChildDTO.cs" />
+    <Compile Include="Models\Class\ClassesDTO.cs" />
     <Compile Include="Models\Guardian\GuardianDTO.cs" />
+    <Compile Include="Models\Request\RequestDTO.cs" />
+    <Compile Include="Models\Slot\DaySlotsDTO.cs" />
     <Compile Include="Models\Student\StudentDTO.cs" />
+    <Compile Include="Models\Student\StudentSlots.cs" />
     <Compile Include="Models\Subject\SubjectDTO.cs" />
     <Compile Include="Models\Tutor\TutorDTO.cs" />
+    <Compile Include="Models\Tutor\TutorSlots.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quran.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -213,12 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Class\" />
-    <Folder Include="Controllers\Request\" />
     <Folder Include="Controllers\Reviews\" />
-    <Folder Include="Controllers\Slots\" />
-    <Folder Include="Models\Class\" />
-    <Folder Include="Models\Request\" />
     <Folder Include="Models\Reviews\" />
   </ItemGroup>
   <ItemGroup>

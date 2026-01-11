@@ -102,10 +102,13 @@ CREATE TABLE StudentTutorRequests (
     status VARCHAR(50) NOT NULL DEFAULT 'pending',
     createdAt DATETIME DEFAULT GETDATE(),
     updatedAt DATETIME DEFAULT GETDATE(),
+    Surahid int not null,
     CONSTRAINT FK_Request_Student FOREIGN KEY (StudentID) REFERENCES users(userid),
     CONSTRAINT FK_Tutor_Request FOREIGN KEY (TutorID) REFERENCES users(userid),
-    CONSTRAINT FK_Request_Subject FOREIGN KEY (SubjectID) REFERENCES Subjects(subjectID)
+    CONSTRAINT FK_Request_Subject FOREIGN KEY (SubjectID) REFERENCES Subjects(subjectID),
+    CONSTRAINT FK_SurahID FOREIGN KEY (Surahid) REFERENCES surahs(id)
 );
+
 
 -- Surahs
 CREATE TABLE Surahs (

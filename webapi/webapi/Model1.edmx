@@ -122,6 +122,7 @@
           <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="createdAt" Type="datetime" />
           <Property Name="updatedAt" Type="datetime" />
+          <Property Name="SurahId" Type="int" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -451,6 +452,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SurahID">
+          <End Role="surahs" Type="Self.surahs" Multiplicity="0..1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="surahs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentTutorRequests">
+              <PropertyRef Name="SurahId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tutor_Request">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
@@ -633,6 +646,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="StudentSlots" EntitySet="StudentSlots" />
           </AssociationSet>
+          <AssociationSet Name="FK_SurahID" Association="Self.FK_SurahID">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tutor_Request" Association="Self.FK_Tutor_Request">
             <End Role="Users" EntitySet="Users" />
             <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
@@ -790,6 +807,7 @@
           <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_StudentRequestTutor" FromRole="StudentTutorRequests" ToRole="Classes" />
           <NavigationProperty Name="User" Relationship="Self.FK_Request_Student" FromRole="StudentTutorRequests" ToRole="Users" />
           <NavigationProperty Name="Subject" Relationship="Self.FK_Request_Subject" FromRole="StudentTutorRequests" ToRole="Subjects" />
+          <NavigationProperty Name="surah" Relationship="Self.FK_SurahID" FromRole="StudentTutorRequests" ToRole="surahs" />
           <NavigationProperty Name="User1" Relationship="Self.FK_Tutor_Request" FromRole="StudentTutorRequests" ToRole="Users" />
         </EntityType>
         <EntityType Name="Subject">
@@ -814,6 +832,7 @@
           <NavigationProperty Name="Juzs" Relationship="Self.FK_Juz_Surah" FromRole="surahs" ToRole="Juz" />
           <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_Surah" FromRole="surahs" ToRole="Lesson" />
           <NavigationProperty Name="Qurans" Relationship="Self.FK_Quran_Surah" FromRole="surahs" ToRole="Quran" />
+          <NavigationProperty Name="StudentTutorRequests" Relationship="Self.FK_SurahID" FromRole="surahs" ToRole="StudentTutorRequests" />
         </EntityType>
         <EntityType Name="TutorSlot">
           <Key>
@@ -958,6 +977,10 @@
           <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
           <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
         </Association>
+        <Association Name="FK_SurahID">
+          <End Role="surahs" Type="Self.surah" Multiplicity="0..1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
+        </Association>
         <Association Name="FK_Tutor_Request">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
@@ -978,7 +1001,7 @@
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="TutorSubjects" Type="Self.TutorSubject" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="onlineQuranTutorEntities12" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="onlineQuranTutorEntities11" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Certificates" EntityType="Self.Certificate" />
           <EntitySet Name="children" EntityType="Self.child" />
           <EntitySet Name="Classes" EntityType="Self.Class" />
@@ -1092,6 +1115,10 @@
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
           </AssociationSet>
+          <AssociationSet Name="FK_SurahID" Association="Self.FK_SurahID">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tutor_Request" Association="Self.FK_Tutor_Request">
             <End Role="Users" EntitySet="Users" />
             <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
@@ -1118,7 +1145,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities12">
+        <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities11">
           <EntitySetMapping Name="Certificates">
             <EntityTypeMapping TypeName="onlineQuranTutorModel.Certificate">
               <MappingFragment StoreEntitySet="Certificate">
@@ -1468,6 +1495,15 @@
             <EndProperty Name="StudentTutorRequests">
               <ScalarProperty Name="RequestID" ColumnName="RequestID" />
             </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SurahID" TypeName="onlineQuranTutorModel.FK_SurahID" StoreEntitySet="StudentTutorRequests">
+            <EndProperty Name="surahs">
+              <ScalarProperty Name="Id" ColumnName="SurahId" />
+            </EndProperty>
+            <EndProperty Name="StudentTutorRequests">
+              <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="SurahId" />
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Tutor_Request" TypeName="onlineQuranTutorModel.FK_Tutor_Request" StoreEntitySet="StudentTutorRequests">
             <EndProperty Name="Users">

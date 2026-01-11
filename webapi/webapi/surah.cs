@@ -20,6 +20,7 @@ namespace webapi
             this.Juzs = new HashSet<Juz>();
             this.Lessons = new HashSet<Lesson>();
             this.Qurans = new HashSet<Quran>();
+            this.StudentTutorRequests = new HashSet<StudentTutorRequest>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace webapi
         public virtual ICollection<Lesson> Lessons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Quran> Qurans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentTutorRequest> StudentTutorRequests { get; set; }
     }
 }

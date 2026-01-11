@@ -117,6 +117,7 @@
     <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="createdAt" Type="datetime" />
     <Property Name="updatedAt" Type="datetime" />
+    <Property Name="SurahId" Type="int" />
   </EntityType>
   <EntityType Name="Subjects">
     <Key>
@@ -446,6 +447,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SurahID">
+    <End Role="surahs" Type="Self.surahs" Multiplicity="0..1" />
+    <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="surahs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentTutorRequests">
+        <PropertyRef Name="SurahId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Tutor_Request">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
@@ -627,6 +640,10 @@
     <AssociationSet Name="FK_StudentSlots_Student" Association="Self.FK_StudentSlots_Student">
       <End Role="Users" EntitySet="Users" />
       <End Role="StudentSlots" EntitySet="StudentSlots" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurahID" Association="Self.FK_SurahID">
+      <End Role="surahs" EntitySet="surahs" />
+      <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
     </AssociationSet>
     <AssociationSet Name="FK_Tutor_Request" Association="Self.FK_Tutor_Request">
       <End Role="Users" EntitySet="Users" />

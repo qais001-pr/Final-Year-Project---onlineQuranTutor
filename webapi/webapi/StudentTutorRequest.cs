@@ -29,6 +29,7 @@ namespace webapi
         public virtual ICollection<Class> Classes { get; set; }
         public virtual User User { get; set; }
         public virtual Subject Subject { get; set; }
+        public virtual surah surah { get; set; }
         public virtual User User1 { get; set; }
     }
 }
