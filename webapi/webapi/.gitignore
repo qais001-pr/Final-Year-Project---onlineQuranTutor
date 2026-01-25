@@ -1,6 +1,7 @@
 # =========================
 # Visual Studio / .NET
 # =========================
+../vs/
 .vs/
 *.user
 *.suo
@@ -16,7 +17,8 @@ Release/
 # =========================
 # NuGet
 # =========================
-packages/
+../packages/
+.packages/
 *.nupkg
 .nuget/
 .nuget/NuGet.Config
