@@ -1,0 +1,70 @@
+# =========================
+# Visual Studio / .NET
+# =========================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# =========================
+# NuGet
+# =========================
+packages/
+*.nupkg
+.nuget/
+.nuget/NuGet.Config
+.nuget/NuGet.exe
+
+# =========================
+# Logs & temp files
+# =========================
+*.log
+*.tmp
+*.temp
+
+# =========================
+# App_Data (runtime data)
+# =========================
+App_Data/*.mdf
+App_Data/*.ldf
+
+# =========================
+# Uploaded files (VERY IMPORTANT)
+# =========================
+UploadedChildImages/
+UploadedGuardianImages/
+UploadedStudentImages/
+UploadedTutorImages/
+
+# =========================
+# Local config overrides
+# =========================
+Web.Debug.config
+Web.Release.config
+
+# =========================
+# OS files
+# =========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# Backup & cache
+# =========================
+*.bak
+*.cache
+*.db
+*.sqlite
