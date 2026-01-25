@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities">
+    <EntitySetMapping Name="Certificates">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Certificate">
+        <MappingFragment StoreEntitySet="Certificate">
+          <ScalarProperty Name="certificateID" ColumnName="certificateID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="issued_by_department" ColumnName="issued_by_department" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="imageType" ColumnName="imageType" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Children">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Child">
+        <MappingFragment StoreEntitySet="Child">
+          <ScalarProperty Name="childID" ColumnName="childID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Class">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Corrections" ColumnName="Corrections" />
+          <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Days">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Day">
+        <MappingFragment StoreEntitySet="Days">
+          <ScalarProperty Name="dayID" ColumnName="dayID" />
+          <ScalarProperty Name="dayName" ColumnName="dayName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guardians">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Guardian">
+        <MappingFragment StoreEntitySet="Guardian">
+          <ScalarProperty Name="guardianID" ColumnName="guardianID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Juzs">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Juz">
+        <MappingFragment StoreEntitySet="Juz">
+          <ScalarProperty Name="Juz_ID" ColumnName="Juz_ID" />
+          <ScalarProperty Name="Arbabic_Start_Word" ColumnName="Arbabic_Start_Word" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LessonPlans">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.LessonPlan">
+        <MappingFragment StoreEntitySet="LessonPlan">
+          <ScalarProperty Name="lessonPlanID" ColumnName="lessonPlanID" />
+          <ScalarProperty Name="lessonName" ColumnName="lessonName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lessons">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Lesson">
+        <MappingFragment StoreEntitySet="Lessons">
+          <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Qurans">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Quran">
+        <MappingFragment StoreEntitySet="Quran">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VerseID" ColumnName="VerseID" />
+          <ScalarProperty Name="AyahText" ColumnName="AyahText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Review">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slots">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Slot">
+        <MappingFragment StoreEntitySet="Slots">
+          <ScalarProperty Name="slotID" ColumnName="slotID" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="studentID" ColumnName="studentID" />
+          <ScalarProperty Name="preferred_teacher" ColumnName="preferred_teacher" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentSlots">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.StudentSlot">
+        <MappingFragment StoreEntitySet="StudentSlots">
+          <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentTutorRequests">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.StudentTutorRequest">
+        <MappingFragment StoreEntitySet="StudentTutorRequests">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+          <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Subject">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+          <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="surahs">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.surah">
+        <MappingFragment StoreEntitySet="surahs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="surah_names" ColumnName="surah_names" />
+          <ScalarProperty Name="surah_Urdu_Names" ColumnName="surah_Urdu_Names" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tutors">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.Tutor">
+        <MappingFragment StoreEntitySet="Tutor">
+          <ScalarProperty Name="tutorID" ColumnName="tutorID" />
+          <ScalarProperty Name="about" ColumnName="about" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TutorSlots">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.TutorSlot">
+        <MappingFragment StoreEntitySet="TutorSlots">
+          <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TutorSubjects">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.TutorSubject">
+        <MappingFragment StoreEntitySet="TutorSubjects">
+          <ScalarProperty Name="tutorSubjectID" ColumnName="tutorSubjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="onlineQuranTutorModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="timezone" ColumnName="timezone" />
+          <ScalarProperty Name="profilePicture" ColumnName="profilePicture" />
+          <ScalarProperty Name="pictureType" ColumnName="pictureType" />
+          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Certificate_Tutor" TypeName="onlineQuranTutorModel.FK_Certificate_Tutor" StoreEntitySet="Certificate">
+      <EndProperty Name="Tutor">
+        <ScalarProperty Name="tutorID" ColumnName="tutorID" />
+      </EndProperty>
+      <EndProperty Name="Certificate">
+        <ScalarProperty Name="certificateID" ColumnName="certificateID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Child_Guardian" TypeName="onlineQuranTutorModel.FK_Child_Guardian" StoreEntitySet="Child">
+      <EndProperty Name="Guardian">
+        <ScalarProperty Name="guardianID" ColumnName="guardianID" />
+      </EndProperty>
+      <EndProperty Name="Child">
+        <ScalarProperty Name="childID" ColumnName="childID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Child_User" TypeName="onlineQuranTutorModel.FK_Child_User" StoreEntitySet="Child">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+      <EndProperty Name="Child">
+        <ScalarProperty Name="childID" ColumnName="childID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Classes_LessonPlan" TypeName="onlineQuranTutorModel.FK_Classes_LessonPlan" StoreEntitySet="Classes">
+      <EndProperty Name="LessonPlan">
+        <ScalarProperty Name="lessonPlanID" ColumnName="LessonPlanID" />
+      </EndProperty>
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Classes_Slot" TypeName="onlineQuranTutorModel.FK_Classes_Slot" StoreEntitySet="Classes">
+      <EndProperty Name="Slots">
+        <ScalarProperty Name="slotID" ColumnName="SlotID" />
+      </EndProperty>
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Classes_Student" TypeName="onlineQuranTutorModel.FK_Classes_Student" StoreEntitySet="Classes">
+      <EndProperty Name="Student">
+        <ScalarProperty Name="studentID" ColumnName="StudentID" />
+      </EndProperty>
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Classes_StudentRequestTutor" TypeName="onlineQuranTutorModel.FK_Classes_StudentRequestTutor" StoreEntitySet="Classes">
+      <EndProperty Name="StudentTutorRequests">
+        <ScalarProperty Name="RequestID" ColumnName="StudentRequestTutorID" />
+      </EndProperty>
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Classes_Subject" TypeName="onlineQuranTutorModel.FK_Classes_Subject" StoreEntitySet="Classes">
+      <EndProperty Name="Subjects">
+        <ScalarProperty Name="subjectID" ColumnName="SubjectID" />
+      </EndProperty>
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Classes_Tutor" TypeName="onlineQuranTutorModel.FK_Classes_Tutor" StoreEntitySet="Classes">
+      <EndProperty Name="Tutor">
+        <ScalarProperty Name="tutorID" ColumnName="TutorID" />
+      </EndProperty>
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Reviews_Class" TypeName="onlineQuranTutorModel.FK_Reviews_Class" StoreEntitySet="Reviews">
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+      </EndProperty>
+      <EndProperty Name="Reviews">
+        <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StudentSlots_Days" TypeName="onlineQuranTutorModel.FK_StudentSlots_Days" StoreEntitySet="StudentSlots">
+      <EndProperty Name="Days">
+        <ScalarProperty Name="dayID" ColumnName="daysID" />
+      </EndProperty>
+      <EndProperty Name="StudentSlots">
+        <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TutorSlots_Day" TypeName="onlineQuranTutorModel.FK_TutorSlots_Day" StoreEntitySet="TutorSlots">
+      <EndProperty Name="Days">
+        <ScalarProperty Name="dayID" ColumnName="dayID" />
+      </EndProperty>
+      <EndProperty Name="TutorSlots">
+        <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Guardian_User" TypeName="onlineQuranTutorModel.FK_Guardian_User" StoreEntitySet="Guardian">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+      <EndProperty Name="Guardian">
+        <ScalarProperty Name="guardianID" ColumnName="guardianID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Juz_QuranVerse" TypeName="onlineQuranTutorModel.FK_Juz_QuranVerse" StoreEntitySet="Juz">
+      <EndProperty Name="Quran">
+        <ScalarProperty Name="ID" ColumnName="Starting_Verse_ID" />
+      </EndProperty>
+      <EndProperty Name="Juz">
+        <ScalarProperty Name="Juz_ID" ColumnName="Juz_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Juz_Surah" TypeName="onlineQuranTutorModel.FK_Juz_Surah" StoreEntitySet="Juz">
+      <EndProperty Name="surahs">
+        <ScalarProperty Name="Id" ColumnName="Surah_ID" />
+      </EndProperty>
+      <EndProperty Name="Juz">
+        <ScalarProperty Name="Juz_ID" ColumnName="Juz_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Lessons_LessonPlan" TypeName="onlineQuranTutorModel.FK_Lessons_LessonPlan" StoreEntitySet="Lessons">
+      <EndProperty Name="LessonPlan">
+        <ScalarProperty Name="lessonPlanID" ColumnName="LessonPlanID" />
+      </EndProperty>
+      <EndProperty Name="Lessons">
+        <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Lessons_Quran" TypeName="onlineQuranTutorModel.FK_Lessons_Quran" StoreEntitySet="Lessons">
+      <EndProperty Name="Quran">
+        <ScalarProperty Name="ID" ColumnName="QuranID" />
+      </EndProperty>
+      <EndProperty Name="Lessons">
+        <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Quran_Surah" TypeName="onlineQuranTutorModel.FK_Quran_Surah" StoreEntitySet="Quran">
+      <EndProperty Name="surahs">
+        <ScalarProperty Name="Id" ColumnName="SuraID" />
+      </EndProperty>
+      <EndProperty Name="Quran">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StudentSlots_Slot" TypeName="onlineQuranTutorModel.FK_StudentSlots_Slot" StoreEntitySet="StudentSlots">
+      <EndProperty Name="Slots">
+        <ScalarProperty Name="slotID" ColumnName="slotID" />
+      </EndProperty>
+      <EndProperty Name="StudentSlots">
+        <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TutorSlots_Slot" TypeName="onlineQuranTutorModel.FK_TutorSlots_Slot" StoreEntitySet="TutorSlots">
+      <EndProperty Name="Slots">
+        <ScalarProperty Name="slotID" ColumnName="slotID" />
+      </EndProperty>
+      <EndProperty Name="TutorSlots">
+        <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Request_Student" TypeName="onlineQuranTutorModel.FK_Request_Student" StoreEntitySet="StudentTutorRequests">
+      <EndProperty Name="Student">
+        <ScalarProperty Name="studentID" ColumnName="StudentID" />
+      </EndProperty>
+      <EndProperty Name="StudentTutorRequests">
+        <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Student_Subject" TypeName="onlineQuranTutorModel.FK_Student_Subject" StoreEntitySet="Student">
+      <EndProperty Name="Subjects">
+        <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+      </EndProperty>
+      <EndProperty Name="Student">
+        <ScalarProperty Name="studentID" ColumnName="studentID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Student_User" TypeName="onlineQuranTutorModel.FK_Student_User" StoreEntitySet="Student">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+      <EndProperty Name="Student">
+        <ScalarProperty Name="studentID" ColumnName="studentID" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="userID" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_StudentSlots_Student" TypeName="onlineQuranTutorModel.FK_StudentSlots_Student" StoreEntitySet="StudentSlots">
+      <EndProperty Name="Student">
+        <ScalarProperty Name="studentID" ColumnName="studentID" />
+      </EndProperty>
+      <EndProperty Name="StudentSlots">
+        <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Request_Subject" TypeName="onlineQuranTutorModel.FK_Request_Subject" StoreEntitySet="StudentTutorRequests">
+      <EndProperty Name="Subjects">
+        <ScalarProperty Name="subjectID" ColumnName="SubjectID" />
+      </EndProperty>
+      <EndProperty Name="StudentTutorRequests">
+        <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Tutor_Request" TypeName="onlineQuranTutorModel.FK_Tutor_Request" StoreEntitySet="StudentTutorRequests">
+      <EndProperty Name="Tutor">
+        <ScalarProperty Name="tutorID" ColumnName="TutorID" />
+      </EndProperty>
+      <EndProperty Name="StudentTutorRequests">
+        <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TutorSubjects_Subject" TypeName="onlineQuranTutorModel.FK_TutorSubjects_Subject" StoreEntitySet="TutorSubjects">
+      <EndProperty Name="Subjects">
+        <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+      </EndProperty>
+      <EndProperty Name="TutorSubjects">
+        <ScalarProperty Name="tutorSubjectID" ColumnName="tutorSubjectID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Tutor_User" TypeName="onlineQuranTutorModel.FK_Tutor_User" StoreEntitySet="Tutor">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+      <EndProperty Name="Tutor">
+        <ScalarProperty Name="tutorID" ColumnName="tutorID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TutorSlots_Tutor" TypeName="onlineQuranTutorModel.FK_TutorSlots_Tutor" StoreEntitySet="TutorSlots">
+      <EndProperty Name="Tutor">
+        <ScalarProperty Name="tutorID" ColumnName="tutorID" />
+      </EndProperty>
+      <EndProperty Name="TutorSlots">
+        <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TutorSubjects_Tutor" TypeName="onlineQuranTutorModel.FK_TutorSubjects_Tutor" StoreEntitySet="TutorSubjects">
+      <EndProperty Name="Tutor">
+        <ScalarProperty Name="tutorID" ColumnName="tutorID" />
+      </EndProperty>
+      <EndProperty Name="TutorSubjects">
+        <ScalarProperty Name="tutorSubjectID" ColumnName="tutorSubjectID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

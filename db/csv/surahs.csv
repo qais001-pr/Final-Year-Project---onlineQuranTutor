@@ -1,0 +1,115 @@
+Id,surah_names,surah_Urdu_Names
+1,Al-Fatihah (The Opening),سُوۡرَةُ الفَاتِحَة
+2,Al-Baqarah (The Cow)),سُوۡرَةُ البَقَرَة
+3,Al-'Imran (The Family of Amran),سُوۡرَةُ آل عِمرَان
+4,An-Nisa' (The Women),سُوۡرَةُ النِّسَاء
+5,Al-Ma'idah (The Food),سُوۡرَةُ المَائدة
+6,Al-An'am (The Cattle),سُوۡرَةُ الانعَام
+7,Al-A'raf (The Elevated Places),سُوۡرَةُ الاعرَاف
+8,Al-Anfal (Voluntary Gifts),سُوۡرَةُ الانفَال
+9,At-Taubah(The Immunity),سُوۡرَةُ التّوبَة
+10,Yunus (Jonah),سُوۡرَةُ یُونس
+11,Hud (Hud),سُوۡرَةُ هُود
+12,Yusuf (Joseph),سُوۡرَةُ یُوسُف
+13,Ar-Ra'd (The Thunder),سُوۡرَةُ الرّعد
+14,Ibrahim (Abraham),سُوۡرَةُ ابراهیم
+15,Al-Hijr (The Rock),سُوۡرَةُ الحِجر
+16,An-Nahl (The Bee),سُوۡرَةُ النّحل
+17,Bani Isra'il (The Israelites),سُوۡرَةُ الاسرَاء
+18,Al-Kahf (The Cave),سُوۡرَةُ الکهف
+19,Maryam (Mary),سُوۡرَةُ مَریَم
+20,Ta Ha (Ta Ha),سُوۡرَةُ طٰه
+21,Al-Anbiya' (The Prophets),سُوۡرَةُ الانبیَاء
+22,Al-Hajj (The Pilgrimage),سُوۡرَةُ الحَجّ
+23,Al-Mu'minun (The Believers),سُوۡرَةُ المؤمنون
+24,An-Nur (The Light),سُوۡرَةُ النُّور
+25,Al-Furqan (The Discrimination),سُوۡرَةُ الفُرقان
+26,Ash-Shu'ara' (The Poets),سُوۡرَةُ الشُّعَرَاء
+27,An-Naml (The Naml),سُوۡرَةُ النَّمل
+28,Al-Qasas (The Narrative),سُوۡرَةُ القَصَص
+29,Al-'Ankabut (The Spider),سُوۡرَةُ العَنکبوت
+30,Ar-Rum (The Romans),سُوۡرَةُ الرُّوم
+31,Luqman (Luqman),سُوۡرَةُ لقمَان
+32,As-Sajdah (The Adoration),سُوۡرَةُ السَّجدَة
+33,Al-Ahzab (The Allies), سُوۡرَةُ الاحزَاب
+34,Al-Saba' (The Saba'),سُوۡرَةُ سَبَا
+35,Al-Fatir (The Originator),سُوۡرَةُ فَاطِر
+36,Ya Sin (Ya Sin),سُوۡرَةُ یسٓ
+37,As-Saffat (Those Ranging in Ranks), سُوۡرَةُ الصَّافات
+38,Sad (Sad),سُوۡرَةُ صٓ
+39,Az-Zumar (The Companies),سُوۡرَةُالزُّمَر
+40,Ghafir (The Forgiving One),سورة غافر
+41,Fussilat (Revelations Well Expounded),سورة فصّلت
+42,Ash-Shura (Counsel),سُوۡرَةُ الشّوریٰ
+43,Az-Zukhruf (Gold),سُوۡرَةُ الزّخرُف
+44,Ad-Dukhan (The Drought),سُوۡرَةُ الدّخان
+45,Al-Jathiyah (The Kneeling),سُوۡرَةُ الجَاثیَة
+46,Al-Ahqaf (The Sandhills),سُوۡرَةُ الاحقاف
+47,Muhammad (Muhammad),سُوۡرَةُ محَمَّد
+48,Al-Fath (The Victory),سُوۡرَةُ الفَتْح
+49,Al-Hujurat (The Apartments),سُوۡرَةُ الحُجرَات
+50,Qaf (Qaf),سُوۡرَةُ قٓ
+51,Ad-Dhariyat (The Scatterers),سُوۡرَةُ الذّاریَات
+52,At-Tur (The Mountain),سُوۡرَةُ الطُّور
+53,An-Najm (The Star),سُوۡرَةُ النّجْم
+54,Al-Qamar (The Moon),سُوۡرَةُ القَمَر
+55,Ar-Rahman (The Beneficent),سُوۡرَةُ الرَّحمٰن
+56,Al-Waqi'ah (The Event),سُوۡرَةُ الواقِعَة
+57,Al-Hadid (Iron),سُوۡرَةُ الحَدید
+58,Al-Mujadilah (The Pleading Woman),سُوۡرَةُ المجَادلة
+59,Al-Hashr (The Banishment),سُوۡرَةُ الحَشر
+60,Al-Mumtahanah (The Woman who is Examined),سُوۡرَةُ المُمتَحنَة
+61,As-Saff (The Ranks),سُوۡرَةُ الصَّف
+62,Al-Jumu'ah (The Congregation),سُوۡرَةُ الجُمُعَة
+63,Al-Munafiqun (The Hypocrites),سُوۡرَةُ المنَافِقون
+64,At-Taghabun (The Manifestation of Losses),سُوۡرَةُ التّغَابُن
+65,At-Talaq (Divorce),سُوۡرَةُ الطّلاَق
+66,At-Tahrim (The Prohibition),سُوۡرَةُ التّحْریم
+67,Al-Mulk (The Kingdom),سُوۡرَةُ المُلک
+68,Al-Qalam (The Pen),سُوۡرَةُ القَلَم
+69,Al-Haqqah (The Sure Truth),سُوۡرَةُ الحَاقَّة
+70,Al-Ma'arij (The Ways of Ascent),سُوۡرَةُ المعَارج
+71,Nuh (Noah),سُوۡرَةُ نُوح
+72,Al-Jinn (The Jinn),سُوۡرَةُ الجنّ
+73,Al-Muzzammil (The One Covering Himself),سُوۡرَةُ المُزمّل
+74,Al-Muddaththir (The One Wrapping Himself Up),سُوۡرَةُ المدَّثِّر
+75,Al-Qiyamah (The Resurrection),سُوۡرَةُ القِیَامَة
+76,Al-Insan (The Man),سورة الإنسان / سُوۡرَةُ ٱلدَّهۡر
+77,Al-Mursalat (Those Sent Forth),سُوۡرَةُ المُرسَلات
+78,An-Naba' (The Announcement),سُوۡرَةُ النّبَإ
+79,An-Nazi'at (Those Who Yearn),سُوۡرَةُ النَّازعَات
+80,'Abasa (He Frowned),سُوۡرَةُ عَبَسَ
+81,At-Takwir (The Folding Up),سُوۡرَةُ التّکویر
+82,Al-Infitar (The Cleaving),سُوۡرَةُ الانفِطار
+83,At-Tatfif (Default in Duty),سُوۡرَةُ المطفّفِین
+84,Al-Inshiqaq (The Bursting Asunder), سُوۡرَةُ الانشقاق
+85,Al-Buruj (The Stars),سُوۡرَةُ البُرُوج
+86,At-Tariq (The Comer by Night),سُوۡرَةُ الطّارق
+87,Al-A'la (The Most High),سُوۡرَةُ الاعلی
+88,Al-Ghashiyah (The Overwhelming Event),سُوۡرَةُ الغَاشِیَة
+89,Al-Fajr (The Daybreak),سُوۡرَةُ الفَجر
+90,Al-Balad (The City),سُوۡرَةُ البَلَد
+91,Ash-Shams (The Sun),سُوۡرَةُ الشّمس
+92,Al-Lail (The Night),سُوۡرَةُ اللیْل
+93,Ad-Duha (The Brightness of the Day),سُوۡرَةُ الِضُّحىٰ
+94,Al-Inshirah (The Expansion),سُوۡرَةُ الشَّرح
+95,At-Tin (The Fig),سُوۡرَةُ التِّین
+96,Al-'Alaq (The Clot),سُوۡرَةُ العَلق
+97,Al-Qadr (The Majesty),سُوۡرَةُ القَدر
+98,Al-Bayyinah (The Clear Evidence),سُوۡرَةُ البَیّنَة
+99,Al-Zilzal (The Shaking),سُوۡرَةُ الزّلزَلة
+100,Al-'Adiyat (The Assaulters),سُوۡرَةُ العَادیَات
+101,Al-Qari'ah (The Calamity),سُوۡرَةُ القَارعَة
+102,At-Takathur (The Abundance of Wealth), سُوۡرَةُ التّکاثُر
+103,Al-'Asr (The Time),سُوۡرَةُ العَصر
+104,Al-Humazah (The Slanderer),سُوۡرَةُ الهُمَزة
+105,Al-Fil (The Elephant),سُوۡرَةُ الفِیل
+106,Al-Quraish (The Quraish),سُوۡرَةُ قُرَیش
+107,Al-Ma'un (Acts of Kindness), سُوۡرَةُ المَاعون
+108,Al-Kauthar (The Abundance of Good), سُوۡرَةُ الکَوثَر
+109,Al-Kafirun (The Disbelievers),سُوۡرَةُ الکافِرون
+110,An-Nasr (The Help), سُوۡرَةُالنّصر
+111,Al-Lahab (The Flame) / Al Masad (The Palm Fibre), سُوۡرَةُ لهب \ سورة الـمسد
+112,Al-Ikhlas (The Unity),سُوۡرَةُ الاخلاص
+113,Al-Falaq (The Dawn),سُوۡرَةُ الفَلَق
+114,An-Nas (The Men),سُوۡرَةُ النَّاس

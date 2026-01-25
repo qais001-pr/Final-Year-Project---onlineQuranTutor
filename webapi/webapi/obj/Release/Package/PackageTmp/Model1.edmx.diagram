@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aaadb0aa9e9e4e83a89b807cd4b2e0d3" Name="Diagram1">
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Certificate" Width="1.5" PointX="5.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.child" Width="1.5" PointX="5.25" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Class" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Day" Width="1.5" PointX="6" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Juz" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Lesson" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.LessonPlan" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Quran" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Review" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Slot" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.StudentSlot" Width="1.5" PointX="8.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.StudentTutorRequest" Width="1.5" PointX="8.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.Subject" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.surah" Width="1.5" PointX="1.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.TutorSlot" Width="1.5" PointX="8.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.TutorSubject" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onlineQuranTutorModel.User" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Certificate_Tutor" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK__children__childI__52793849" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK__children__guardi__536D5C82" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Classes_LessonPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Classes_Slot" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Classes_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Classes_StudentRequestTutor" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Classes_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Classes_Tutor" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Reviews_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_StudentSlots_Days" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_TutorSlots_Day" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Juz_QuranVerse" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Juz_Surah" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Lessons_LessonPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Lessons_Quran" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Lessons_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Lessons_Surah" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Quran_Surah" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_StudentSlots_Slot" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_TutorSlots_Slot" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_StudentSlots_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Request_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Request_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_SurahID" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_Tutor_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK__Users__subjectid__278EDA44" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_TutorSubjects_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_TutorSlots_Tutor" ManuallyRouted="false" />
+        <AssociationConnector Association="onlineQuranTutorModel.FK_TutorSubjects_Tutor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

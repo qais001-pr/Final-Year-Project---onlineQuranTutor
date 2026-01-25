@@ -1,0 +1,19 @@
+BULK INSERT Quran FROM 'C:\Users\admin\Desktop\OnlineQuran\Quran.csv'
+WITH (
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',      
+    ROWTERMINATOR = '\n',      
+    CODEPAGE = '65001',         
+    DATAFILETYPE = 'char'       
+);
+
+
+drop table quran;
+CREATE TABLE Quran (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    DatabaseID SMALLINT NOT NULL,
+    SuraID INT NOT NULL,
+    VerseID INT NOT NULL,
+    AyahText NVARCHAR(MAX) NOT NULL,
+    Pageno INT
+)

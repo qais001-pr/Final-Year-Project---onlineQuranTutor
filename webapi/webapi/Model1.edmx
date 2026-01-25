@@ -1,0 +1,1575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="onlineQuranTutorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="certificateID" />
+          </Key>
+          <Property Name="certificateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="issued_by_department" Type="varchar" MaxLength="200" />
+          <Property Name="image" Type="varbinary(max)" />
+          <Property Name="imageType" Type="varchar" MaxLength="20" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="children">
+          <Key>
+            <PropertyRef Name="childrenID" />
+          </Key>
+          <Property Name="childrenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="childId" Type="int" Nullable="false" />
+          <Property Name="guardianID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="TutorID" Type="int" Nullable="false" />
+          <Property Name="SlotID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="LessonPlanID" Type="int" Nullable="false" />
+          <Property Name="StudentRequestTutorID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Corrections" Type="varchar(max)" />
+          <Property Name="ClassDate" Type="date" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Days">
+          <Key>
+            <PropertyRef Name="dayID" />
+          </Key>
+          <Property Name="dayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dayName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Juz">
+          <Key>
+            <PropertyRef Name="Juz_ID" />
+          </Key>
+          <Property Name="Juz_ID" Type="int" Nullable="false" />
+          <Property Name="Surah_ID" Type="int" Nullable="false" />
+          <Property Name="Starting_Verse_ID" Type="int" Nullable="false" />
+          <Property Name="Arbabic_Start_Word" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="LessonsID" />
+          </Key>
+          <Property Name="LessonsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LessonPlanID" Type="int" Nullable="false" />
+          <Property Name="QuranID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="SurahID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LessonPlan">
+          <Key>
+            <PropertyRef Name="lessonPlanID" />
+          </Key>
+          <Property Name="lessonPlanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lessonName" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quran">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SuraID" Type="int" Nullable="false" />
+          <Property Name="VerseID" Type="int" Nullable="false" />
+          <Property Name="AyahText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Slots">
+          <Key>
+            <PropertyRef Name="slotID" />
+          </Key>
+          <Property Name="slotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="startTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="endTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StudentSlots">
+          <Key>
+            <PropertyRef Name="studentSlotID" />
+          </Key>
+          <Property Name="studentSlotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slotID" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="daysID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentTutorRequests">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="TutorID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" />
+          <Property Name="updatedAt" Type="datetime" />
+          <Property Name="SurahId" Type="int" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="subjectID" />
+          </Key>
+          <Property Name="subjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subjectName" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="surahs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="surah_names" Type="nvarchar(max)" />
+          <Property Name="surah_Urdu_Names" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TutorSlots">
+          <Key>
+            <PropertyRef Name="tutorSlotID" />
+          </Key>
+          <Property Name="tutorSlotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="slotID" Type="int" Nullable="false" />
+          <Property Name="dayID" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TutorSubjects">
+          <Key>
+            <PropertyRef Name="tutorSubjectID" />
+          </Key>
+          <Property Name="tutorSubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="subjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="gender" Type="varchar" MaxLength="20" />
+          <Property Name="dateOfBirth" Type="date" />
+          <Property Name="userType" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="100" />
+          <Property Name="city" Type="varchar" MaxLength="100" />
+          <Property Name="timezone" Type="varchar" MaxLength="100" />
+          <Property Name="profile" Type="varchar" MaxLength="100" />
+          <Property Name="about" Type="varchar" MaxLength="400" />
+          <Property Name="preferred_tutor" Type="varchar" MaxLength="20" />
+          <Property Name="subjectid" Type="int" />
+        </EntityType>
+        <Association Name="FK__children__childI__52793849">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="children" Type="Self.children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="children">
+              <PropertyRef Name="childId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__children__guardi__536D5C82">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="children" Type="Self.children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="children">
+              <PropertyRef Name="guardianID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__subjectid__278EDA44">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="subjectID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="subjectid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Certificate_Tutor">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_LessonPlan">
+          <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LessonPlan">
+              <PropertyRef Name="lessonPlanID" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="LessonPlanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Slot">
+          <End Role="Slots" Type="Self.Slots" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slots">
+              <PropertyRef Name="slotID" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="SlotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Student">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_StudentRequestTutor">
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTutorRequests">
+              <PropertyRef Name="RequestID" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="StudentRequestTutorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Subject">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="subjectID" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Tutor">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Classes">
+              <PropertyRef Name="TutorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Juz_QuranVerse">
+          <End Role="Quran" Type="Self.Quran" Multiplicity="1" />
+          <End Role="Juz" Type="Self.Juz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quran">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Juz">
+              <PropertyRef Name="Starting_Verse_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Juz_Surah">
+          <End Role="surahs" Type="Self.surahs" Multiplicity="1" />
+          <End Role="Juz" Type="Self.Juz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="surahs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Juz">
+              <PropertyRef Name="Surah_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lessons_LessonPlan">
+          <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LessonPlan">
+              <PropertyRef Name="lessonPlanID" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="LessonPlanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lessons_Quran">
+          <End Role="Quran" Type="Self.Quran" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quran">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="QuranID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lessons_Subject">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="subjectID" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lessons_Surah">
+          <End Role="surahs" Type="Self.surahs" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="surahs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lesson">
+              <PropertyRef Name="SurahID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quran_Surah">
+          <End Role="surahs" Type="Self.surahs" Multiplicity="1" />
+          <End Role="Quran" Type="Self.Quran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="surahs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quran">
+              <PropertyRef Name="SuraID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Student">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="StudentTutorRequests">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Subject">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="subjectID" />
+            </Principal>
+            <Dependent Role="StudentTutorRequests">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reviews_Class">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSlots_Days">
+          <End Role="Days" Type="Self.Days" Multiplicity="1" />
+          <End Role="StudentSlots" Type="Self.StudentSlots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Days">
+              <PropertyRef Name="dayID" />
+            </Principal>
+            <Dependent Role="StudentSlots">
+              <PropertyRef Name="daysID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSlots_Slot">
+          <End Role="Slots" Type="Self.Slots" Multiplicity="1" />
+          <End Role="StudentSlots" Type="Self.StudentSlots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slots">
+              <PropertyRef Name="slotID" />
+            </Principal>
+            <Dependent Role="StudentSlots">
+              <PropertyRef Name="slotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentSlots_Student">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="StudentSlots" Type="Self.StudentSlots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="StudentSlots">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurahID">
+          <End Role="surahs" Type="Self.surahs" Multiplicity="0..1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="surahs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentTutorRequests">
+              <PropertyRef Name="SurahId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tutor_Request">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="StudentTutorRequests">
+              <PropertyRef Name="TutorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutorSlots_Day">
+          <End Role="Days" Type="Self.Days" Multiplicity="1" />
+          <End Role="TutorSlots" Type="Self.TutorSlots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Days">
+              <PropertyRef Name="dayID" />
+            </Principal>
+            <Dependent Role="TutorSlots">
+              <PropertyRef Name="dayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutorSlots_Slot">
+          <End Role="Slots" Type="Self.Slots" Multiplicity="1" />
+          <End Role="TutorSlots" Type="Self.TutorSlots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slots">
+              <PropertyRef Name="slotID" />
+            </Principal>
+            <Dependent Role="TutorSlots">
+              <PropertyRef Name="slotID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutorSlots_Tutor">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="TutorSlots" Type="Self.TutorSlots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="TutorSlots">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutorSubjects_Subject">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="TutorSubjects" Type="Self.TutorSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="subjectID" />
+            </Principal>
+            <Dependent Role="TutorSubjects">
+              <PropertyRef Name="subjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TutorSubjects_Tutor">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="TutorSubjects" Type="Self.TutorSubjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="TutorSubjects">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="onlineQuranTutorModelStoreContainer">
+          <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="children" EntityType="Self.children" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Juz" EntityType="Self.Juz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LessonPlan" EntityType="Self.LessonPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quran" EntityType="Self.Quran" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slots" EntityType="Self.Slots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentSlots" EntityType="Self.StudentSlots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentTutorRequests" EntityType="Self.StudentTutorRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="surahs" EntityType="Self.surahs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TutorSlots" EntityType="Self.TutorSlots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TutorSubjects" EntityType="Self.TutorSubjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__children__childI__52793849" Association="Self.FK__children__childI__52793849">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="children" EntitySet="children" />
+          </AssociationSet>
+          <AssociationSet Name="FK__children__guardi__536D5C82" Association="Self.FK__children__guardi__536D5C82">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="children" EntitySet="children" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__subjectid__278EDA44" Association="Self.FK__Users__subjectid__278EDA44">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Certificate_Tutor" Association="Self.FK_Certificate_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Certificate" EntitySet="Certificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_LessonPlan" Association="Self.FK_Classes_LessonPlan">
+            <End Role="LessonPlan" EntitySet="LessonPlan" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Slot" Association="Self.FK_Classes_Slot">
+            <End Role="Slots" EntitySet="Slots" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Student" Association="Self.FK_Classes_Student">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_StudentRequestTutor" Association="Self.FK_Classes_StudentRequestTutor">
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Subject" Association="Self.FK_Classes_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Tutor" Association="Self.FK_Classes_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Juz_QuranVerse" Association="Self.FK_Juz_QuranVerse">
+            <End Role="Quran" EntitySet="Quran" />
+            <End Role="Juz" EntitySet="Juz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Juz_Surah" Association="Self.FK_Juz_Surah">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="Juz" EntitySet="Juz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_LessonPlan" Association="Self.FK_Lessons_LessonPlan">
+            <End Role="LessonPlan" EntitySet="LessonPlan" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_Quran" Association="Self.FK_Lessons_Quran">
+            <End Role="Quran" EntitySet="Quran" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_Subject" Association="Self.FK_Lessons_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_Surah" Association="Self.FK_Lessons_Surah">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="Lesson" EntitySet="Lesson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quran_Surah" Association="Self.FK_Quran_Surah">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="Quran" EntitySet="Quran" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Student" Association="Self.FK_Request_Student">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Subject" Association="Self.FK_Request_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_Class" Association="Self.FK_Reviews_Class">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSlots_Days" Association="Self.FK_StudentSlots_Days">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="StudentSlots" EntitySet="StudentSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSlots_Slot" Association="Self.FK_StudentSlots_Slot">
+            <End Role="Slots" EntitySet="Slots" />
+            <End Role="StudentSlots" EntitySet="StudentSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSlots_Student" Association="Self.FK_StudentSlots_Student">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="StudentSlots" EntitySet="StudentSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurahID" Association="Self.FK_SurahID">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tutor_Request" Association="Self.FK_Tutor_Request">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSlots_Day" Association="Self.FK_TutorSlots_Day">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="TutorSlots" EntitySet="TutorSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSlots_Slot" Association="Self.FK_TutorSlots_Slot">
+            <End Role="Slots" EntitySet="Slots" />
+            <End Role="TutorSlots" EntitySet="TutorSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSlots_Tutor" Association="Self.FK_TutorSlots_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TutorSlots" EntitySet="TutorSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSubjects_Subject" Association="Self.FK_TutorSubjects_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="TutorSubjects" EntitySet="TutorSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSubjects_Tutor" Association="Self.FK_TutorSubjects_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TutorSubjects" EntitySet="TutorSubjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="onlineQuranTutorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="certificateID" />
+          </Key>
+          <Property Name="certificateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="issued_by_department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="imageType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Certificate_Tutor" FromRole="Certificate" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="child">
+          <Key>
+            <PropertyRef Name="childrenID" />
+          </Key>
+          <Property Name="childrenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="Self.FK__children__childI__52793849" FromRole="children" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__children__guardi__536D5C82" FromRole="children" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Corrections" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClassDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LessonPlan" Relationship="Self.FK_Classes_LessonPlan" FromRole="Classes" ToRole="LessonPlan" />
+          <NavigationProperty Name="Slot" Relationship="Self.FK_Classes_Slot" FromRole="Classes" ToRole="Slots" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Classes_Student" FromRole="Classes" ToRole="Users" />
+          <NavigationProperty Name="StudentTutorRequest" Relationship="Self.FK_Classes_StudentRequestTutor" FromRole="Classes" ToRole="StudentTutorRequests" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Classes_Subject" FromRole="Classes" ToRole="Subjects" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Classes_Tutor" FromRole="Classes" ToRole="Users" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_Class" FromRole="Classes" ToRole="Reviews" />
+        </EntityType>
+        <EntityType Name="Day">
+          <Key>
+            <PropertyRef Name="dayID" />
+          </Key>
+          <Property Name="dayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dayName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StudentSlots" Relationship="Self.FK_StudentSlots_Days" FromRole="Days" ToRole="StudentSlots" />
+          <NavigationProperty Name="TutorSlots" Relationship="Self.FK_TutorSlots_Day" FromRole="Days" ToRole="TutorSlots" />
+        </EntityType>
+        <EntityType Name="Juz">
+          <Key>
+            <PropertyRef Name="Juz_ID" />
+          </Key>
+          <Property Name="Juz_ID" Type="Int32" Nullable="false" />
+          <Property Name="Arbabic_Start_Word" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Quran" Relationship="Self.FK_Juz_QuranVerse" FromRole="Juz" ToRole="Quran" />
+          <NavigationProperty Name="surah" Relationship="Self.FK_Juz_Surah" FromRole="Juz" ToRole="surahs" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="LessonsID" />
+          </Key>
+          <Property Name="LessonsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="LessonPlan" Relationship="Self.FK_Lessons_LessonPlan" FromRole="Lesson" ToRole="LessonPlan" />
+          <NavigationProperty Name="Quran" Relationship="Self.FK_Lessons_Quran" FromRole="Lesson" ToRole="Quran" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Lessons_Subject" FromRole="Lesson" ToRole="Subjects" />
+          <NavigationProperty Name="surah" Relationship="Self.FK_Lessons_Surah" FromRole="Lesson" ToRole="surahs" />
+        </EntityType>
+        <EntityType Name="LessonPlan">
+          <Key>
+            <PropertyRef Name="lessonPlanID" />
+          </Key>
+          <Property Name="lessonPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lessonName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_LessonPlan" FromRole="LessonPlan" ToRole="Classes" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_LessonPlan" FromRole="LessonPlan" ToRole="Lesson" />
+        </EntityType>
+        <EntityType Name="Quran">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VerseID" Type="Int32" Nullable="false" />
+          <Property Name="AyahText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Juzs" Relationship="Self.FK_Juz_QuranVerse" FromRole="Quran" ToRole="Juz" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_Quran" FromRole="Quran" ToRole="Lesson" />
+          <NavigationProperty Name="surah" Relationship="Self.FK_Quran_Surah" FromRole="Quran" ToRole="surahs" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Reviews_Class" FromRole="Reviews" ToRole="Classes" />
+        </EntityType>
+        <EntityType Name="Slot">
+          <Key>
+            <PropertyRef Name="slotID" />
+          </Key>
+          <Property Name="slotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="startTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="endTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Slot" FromRole="Slots" ToRole="Classes" />
+          <NavigationProperty Name="StudentSlots" Relationship="Self.FK_StudentSlots_Slot" FromRole="Slots" ToRole="StudentSlots" />
+          <NavigationProperty Name="TutorSlots" Relationship="Self.FK_TutorSlots_Slot" FromRole="Slots" ToRole="TutorSlots" />
+        </EntityType>
+        <EntityType Name="StudentSlot">
+          <Key>
+            <PropertyRef Name="studentSlotID" />
+          </Key>
+          <Property Name="studentSlotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Day" Relationship="Self.FK_StudentSlots_Days" FromRole="StudentSlots" ToRole="Days" />
+          <NavigationProperty Name="Slot" Relationship="Self.FK_StudentSlots_Slot" FromRole="StudentSlots" ToRole="Slots" />
+          <NavigationProperty Name="User" Relationship="Self.FK_StudentSlots_Student" FromRole="StudentSlots" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="StudentTutorRequest">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Precision="3" />
+          <Property Name="updatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_StudentRequestTutor" FromRole="StudentTutorRequests" ToRole="Classes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Request_Student" FromRole="StudentTutorRequests" ToRole="Users" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Request_Subject" FromRole="StudentTutorRequests" ToRole="Subjects" />
+          <NavigationProperty Name="surah" Relationship="Self.FK_SurahID" FromRole="StudentTutorRequests" ToRole="surahs" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Tutor_Request" FromRole="StudentTutorRequests" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="subjectID" />
+          </Key>
+          <Property Name="subjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subjectName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Subject" FromRole="Subjects" ToRole="Classes" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_Subject" FromRole="Subjects" ToRole="Lesson" />
+          <NavigationProperty Name="StudentTutorRequests" Relationship="Self.FK_Request_Subject" FromRole="Subjects" ToRole="StudentTutorRequests" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__subjectid__278EDA44" FromRole="Subjects" ToRole="Users" />
+          <NavigationProperty Name="TutorSubjects" Relationship="Self.FK_TutorSubjects_Subject" FromRole="Subjects" ToRole="TutorSubjects" />
+        </EntityType>
+        <EntityType Name="surah">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="surah_names" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="surah_Urdu_Names" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Juzs" Relationship="Self.FK_Juz_Surah" FromRole="surahs" ToRole="Juz" />
+          <NavigationProperty Name="Lessons" Relationship="Self.FK_Lessons_Surah" FromRole="surahs" ToRole="Lesson" />
+          <NavigationProperty Name="Qurans" Relationship="Self.FK_Quran_Surah" FromRole="surahs" ToRole="Quran" />
+          <NavigationProperty Name="StudentTutorRequests" Relationship="Self.FK_SurahID" FromRole="surahs" ToRole="StudentTutorRequests" />
+        </EntityType>
+        <EntityType Name="TutorSlot">
+          <Key>
+            <PropertyRef Name="tutorSlotID" />
+          </Key>
+          <Property Name="tutorSlotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Day" Relationship="Self.FK_TutorSlots_Day" FromRole="TutorSlots" ToRole="Days" />
+          <NavigationProperty Name="Slot" Relationship="Self.FK_TutorSlots_Slot" FromRole="TutorSlots" ToRole="Slots" />
+          <NavigationProperty Name="User" Relationship="Self.FK_TutorSlots_Tutor" FromRole="TutorSlots" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="TutorSubject">
+          <Key>
+            <PropertyRef Name="tutorSubjectID" />
+          </Key>
+          <Property Name="tutorSubjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_TutorSubjects_Subject" FromRole="TutorSubjects" ToRole="Subjects" />
+          <NavigationProperty Name="User" Relationship="Self.FK_TutorSubjects_Tutor" FromRole="TutorSubjects" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="userType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="timezone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="profile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="about" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="preferred_tutor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Certificates" Relationship="Self.FK_Certificate_Tutor" FromRole="Users" ToRole="Certificate" />
+          <NavigationProperty Name="children" Relationship="Self.FK__children__childI__52793849" FromRole="Users" ToRole="children" />
+          <NavigationProperty Name="children1" Relationship="Self.FK__children__guardi__536D5C82" FromRole="Users" ToRole="children" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Student" FromRole="Users" ToRole="Classes" />
+          <NavigationProperty Name="Classes1" Relationship="Self.FK_Classes_Tutor" FromRole="Users" ToRole="Classes" />
+          <NavigationProperty Name="StudentSlots" Relationship="Self.FK_StudentSlots_Student" FromRole="Users" ToRole="StudentSlots" />
+          <NavigationProperty Name="StudentTutorRequests" Relationship="Self.FK_Request_Student" FromRole="Users" ToRole="StudentTutorRequests" />
+          <NavigationProperty Name="StudentTutorRequests1" Relationship="Self.FK_Tutor_Request" FromRole="Users" ToRole="StudentTutorRequests" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Users__subjectid__278EDA44" FromRole="Users" ToRole="Subjects" />
+          <NavigationProperty Name="TutorSlots" Relationship="Self.FK_TutorSlots_Tutor" FromRole="Users" ToRole="TutorSlots" />
+          <NavigationProperty Name="TutorSubjects" Relationship="Self.FK_TutorSubjects_Tutor" FromRole="Users" ToRole="TutorSubjects" />
+        </EntityType>
+        <Association Name="FK_Certificate_Tutor">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__children__childI__52793849">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="children" Type="Self.child" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__children__guardi__536D5C82">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="children" Type="Self.child" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Classes_LessonPlan">
+          <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Classes_Slot">
+          <End Role="Slots" Type="Self.Slot" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Classes_Student">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Classes_StudentRequestTutor">
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Classes_Subject">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Classes_Tutor">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Reviews_Class">
+          <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_StudentSlots_Days">
+          <End Role="Days" Type="Self.Day" Multiplicity="1" />
+          <End Role="StudentSlots" Type="Self.StudentSlot" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TutorSlots_Day">
+          <End Role="Days" Type="Self.Day" Multiplicity="1" />
+          <End Role="TutorSlots" Type="Self.TutorSlot" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Juz_QuranVerse">
+          <End Role="Quran" Type="Self.Quran" Multiplicity="1" />
+          <End Role="Juz" Type="Self.Juz" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Juz_Surah">
+          <End Role="surahs" Type="Self.surah" Multiplicity="1" />
+          <End Role="Juz" Type="Self.Juz" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Lessons_LessonPlan">
+          <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Lessons_Quran">
+          <End Role="Quran" Type="Self.Quran" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Lessons_Subject">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Lessons_Surah">
+          <End Role="surahs" Type="Self.surah" Multiplicity="1" />
+          <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Quran_Surah">
+          <End Role="surahs" Type="Self.surah" Multiplicity="1" />
+          <End Role="Quran" Type="Self.Quran" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_StudentSlots_Slot">
+          <End Role="Slots" Type="Self.Slot" Multiplicity="1" />
+          <End Role="StudentSlots" Type="Self.StudentSlot" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TutorSlots_Slot">
+          <End Role="Slots" Type="Self.Slot" Multiplicity="1" />
+          <End Role="TutorSlots" Type="Self.TutorSlot" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_StudentSlots_Student">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="StudentSlots" Type="Self.StudentSlot" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Request_Student">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Request_Subject">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_SurahID">
+          <End Role="surahs" Type="Self.surah" Multiplicity="0..1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Tutor_Request">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="StudentTutorRequests" Type="Self.StudentTutorRequest" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Users__subjectid__278EDA44">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TutorSubjects_Subject">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="TutorSubjects" Type="Self.TutorSubject" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TutorSlots_Tutor">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="TutorSlots" Type="Self.TutorSlot" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TutorSubjects_Tutor">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="TutorSubjects" Type="Self.TutorSubject" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="onlineQuranTutorEntities13" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Certificates" EntityType="Self.Certificate" />
+          <EntitySet Name="children" EntityType="Self.child" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Days" EntityType="Self.Day" />
+          <EntitySet Name="Juzs" EntityType="Self.Juz" />
+          <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+          <EntitySet Name="LessonPlans" EntityType="Self.LessonPlan" />
+          <EntitySet Name="Qurans" EntityType="Self.Quran" />
+          <EntitySet Name="Reviews" EntityType="Self.Review" />
+          <EntitySet Name="Slots" EntityType="Self.Slot" />
+          <EntitySet Name="StudentSlots" EntityType="Self.StudentSlot" />
+          <EntitySet Name="StudentTutorRequests" EntityType="Self.StudentTutorRequest" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="surahs" EntityType="Self.surah" />
+          <EntitySet Name="TutorSlots" EntityType="Self.TutorSlot" />
+          <EntitySet Name="TutorSubjects" EntityType="Self.TutorSubject" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Certificate_Tutor" Association="Self.FK_Certificate_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Certificate" EntitySet="Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__children__childI__52793849" Association="Self.FK__children__childI__52793849">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="children" EntitySet="children" />
+          </AssociationSet>
+          <AssociationSet Name="FK__children__guardi__536D5C82" Association="Self.FK__children__guardi__536D5C82">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="children" EntitySet="children" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_LessonPlan" Association="Self.FK_Classes_LessonPlan">
+            <End Role="LessonPlan" EntitySet="LessonPlans" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Slot" Association="Self.FK_Classes_Slot">
+            <End Role="Slots" EntitySet="Slots" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Student" Association="Self.FK_Classes_Student">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_StudentRequestTutor" Association="Self.FK_Classes_StudentRequestTutor">
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Subject" Association="Self.FK_Classes_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Tutor" Association="Self.FK_Classes_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Classes" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_Class" Association="Self.FK_Reviews_Class">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSlots_Days" Association="Self.FK_StudentSlots_Days">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="StudentSlots" EntitySet="StudentSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSlots_Day" Association="Self.FK_TutorSlots_Day">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="TutorSlots" EntitySet="TutorSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Juz_QuranVerse" Association="Self.FK_Juz_QuranVerse">
+            <End Role="Quran" EntitySet="Qurans" />
+            <End Role="Juz" EntitySet="Juzs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Juz_Surah" Association="Self.FK_Juz_Surah">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="Juz" EntitySet="Juzs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_LessonPlan" Association="Self.FK_Lessons_LessonPlan">
+            <End Role="LessonPlan" EntitySet="LessonPlans" />
+            <End Role="Lesson" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_Quran" Association="Self.FK_Lessons_Quran">
+            <End Role="Quran" EntitySet="Qurans" />
+            <End Role="Lesson" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_Subject" Association="Self.FK_Lessons_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Lesson" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lessons_Surah" Association="Self.FK_Lessons_Surah">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="Lesson" EntitySet="Lessons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quran_Surah" Association="Self.FK_Quran_Surah">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="Quran" EntitySet="Qurans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSlots_Slot" Association="Self.FK_StudentSlots_Slot">
+            <End Role="Slots" EntitySet="Slots" />
+            <End Role="StudentSlots" EntitySet="StudentSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSlots_Slot" Association="Self.FK_TutorSlots_Slot">
+            <End Role="Slots" EntitySet="Slots" />
+            <End Role="TutorSlots" EntitySet="TutorSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentSlots_Student" Association="Self.FK_StudentSlots_Student">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="StudentSlots" EntitySet="StudentSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Student" Association="Self.FK_Request_Student">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Subject" Association="Self.FK_Request_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurahID" Association="Self.FK_SurahID">
+            <End Role="surahs" EntitySet="surahs" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tutor_Request" Association="Self.FK_Tutor_Request">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="StudentTutorRequests" EntitySet="StudentTutorRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__subjectid__278EDA44" Association="Self.FK__Users__subjectid__278EDA44">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSubjects_Subject" Association="Self.FK_TutorSubjects_Subject">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="TutorSubjects" EntitySet="TutorSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSlots_Tutor" Association="Self.FK_TutorSlots_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TutorSlots" EntitySet="TutorSlots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TutorSubjects_Tutor" Association="Self.FK_TutorSubjects_Tutor">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TutorSubjects" EntitySet="TutorSubjects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="onlineQuranTutorModelStoreContainer" CdmEntityContainer="onlineQuranTutorEntities13">
+          <EntitySetMapping Name="Certificates">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Certificate">
+              <MappingFragment StoreEntitySet="Certificate">
+                <ScalarProperty Name="certificateID" ColumnName="certificateID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="issued_by_department" ColumnName="issued_by_department" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="imageType" ColumnName="imageType" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="children">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.child">
+              <MappingFragment StoreEntitySet="children">
+                <ScalarProperty Name="childrenID" ColumnName="childrenID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Class">
+              <MappingFragment StoreEntitySet="Classes">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Corrections" ColumnName="Corrections" />
+                <ScalarProperty Name="ClassDate" ColumnName="ClassDate" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Days">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Day">
+              <MappingFragment StoreEntitySet="Days">
+                <ScalarProperty Name="dayID" ColumnName="dayID" />
+                <ScalarProperty Name="dayName" ColumnName="dayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Juzs">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Juz">
+              <MappingFragment StoreEntitySet="Juz">
+                <ScalarProperty Name="Juz_ID" ColumnName="Juz_ID" />
+                <ScalarProperty Name="Arbabic_Start_Word" ColumnName="Arbabic_Start_Word" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lessons">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Lesson">
+              <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LessonPlans">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.LessonPlan">
+              <MappingFragment StoreEntitySet="LessonPlan">
+                <ScalarProperty Name="lessonPlanID" ColumnName="lessonPlanID" />
+                <ScalarProperty Name="lessonName" ColumnName="lessonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qurans">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Quran">
+              <MappingFragment StoreEntitySet="Quran">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VerseID" ColumnName="VerseID" />
+                <ScalarProperty Name="AyahText" ColumnName="AyahText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slots">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Slot">
+              <MappingFragment StoreEntitySet="Slots">
+                <ScalarProperty Name="slotID" ColumnName="slotID" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentSlots">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.StudentSlot">
+              <MappingFragment StoreEntitySet="StudentSlots">
+                <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentTutorRequests">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.StudentTutorRequest">
+              <MappingFragment StoreEntitySet="StudentTutorRequests">
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+                <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="surahs">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.surah">
+              <MappingFragment StoreEntitySet="surahs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="surah_names" ColumnName="surah_names" />
+                <ScalarProperty Name="surah_Urdu_Names" ColumnName="surah_Urdu_Names" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TutorSlots">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.TutorSlot">
+              <MappingFragment StoreEntitySet="TutorSlots">
+                <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TutorSubjects">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.TutorSubject">
+              <MappingFragment StoreEntitySet="TutorSubjects">
+                <ScalarProperty Name="tutorSubjectID" ColumnName="tutorSubjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="onlineQuranTutorModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="timezone" ColumnName="timezone" />
+                <ScalarProperty Name="profile" ColumnName="profile" />
+                <ScalarProperty Name="about" ColumnName="about" />
+                <ScalarProperty Name="preferred_tutor" ColumnName="preferred_tutor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Certificate_Tutor" TypeName="onlineQuranTutorModel.FK_Certificate_Tutor" StoreEntitySet="Certificate">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="userid" />
+            </EndProperty>
+            <EndProperty Name="Certificate">
+              <ScalarProperty Name="certificateID" ColumnName="certificateID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__children__childI__52793849" TypeName="onlineQuranTutorModel.FK__children__childI__52793849" StoreEntitySet="children">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="childId" />
+            </EndProperty>
+            <EndProperty Name="children">
+              <ScalarProperty Name="childrenID" ColumnName="childrenID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__children__guardi__536D5C82" TypeName="onlineQuranTutorModel.FK__children__guardi__536D5C82" StoreEntitySet="children">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="guardianID" />
+            </EndProperty>
+            <EndProperty Name="children">
+              <ScalarProperty Name="childrenID" ColumnName="childrenID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Classes_LessonPlan" TypeName="onlineQuranTutorModel.FK_Classes_LessonPlan" StoreEntitySet="Classes">
+            <EndProperty Name="LessonPlan">
+              <ScalarProperty Name="lessonPlanID" ColumnName="LessonPlanID" />
+            </EndProperty>
+            <EndProperty Name="Classes">
+              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Classes_Slot" TypeName="onlineQuranTutorModel.FK_Classes_Slot" StoreEntitySet="Classes">
+            <EndProperty Name="Slots">
+              <ScalarProperty Name="slotID" ColumnName="SlotID" />
+            </EndProperty>
+            <EndProperty Name="Classes">
+              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Classes_Student" TypeName="onlineQuranTutorModel.FK_Classes_Student" StoreEntitySet="Classes">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="StudentID" />
+            </EndProperty>
+            <EndProperty Name="Classes">
+              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Classes_StudentRequestTutor" TypeName="onlineQuranTutorModel.FK_Classes_StudentRequestTutor" StoreEntitySet="Classes">
+            <EndProperty Name="StudentTutorRequests">
+              <ScalarProperty Name="RequestID" ColumnName="StudentRequestTutorID" />
+            </EndProperty>
+            <EndProperty Name="Classes">
+              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Classes_Subject" TypeName="onlineQuranTutorModel.FK_Classes_Subject" StoreEntitySet="Classes">
+            <EndProperty Name="Subjects">
+              <ScalarProperty Name="subjectID" ColumnName="SubjectID" />
+            </EndProperty>
+            <EndProperty Name="Classes">
+              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Classes_Tutor" TypeName="onlineQuranTutorModel.FK_Classes_Tutor" StoreEntitySet="Classes">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="TutorID" />
+            </EndProperty>
+            <EndProperty Name="Classes">
+              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Reviews_Class" TypeName="onlineQuranTutorModel.FK_Reviews_Class" StoreEntitySet="Reviews">
+            <EndProperty Name="Classes">
+              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+            </EndProperty>
+            <EndProperty Name="Reviews">
+              <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_StudentSlots_Days" TypeName="onlineQuranTutorModel.FK_StudentSlots_Days" StoreEntitySet="StudentSlots">
+            <EndProperty Name="Days">
+              <ScalarProperty Name="dayID" ColumnName="daysID" />
+            </EndProperty>
+            <EndProperty Name="StudentSlots">
+              <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TutorSlots_Day" TypeName="onlineQuranTutorModel.FK_TutorSlots_Day" StoreEntitySet="TutorSlots">
+            <EndProperty Name="Days">
+              <ScalarProperty Name="dayID" ColumnName="dayID" />
+            </EndProperty>
+            <EndProperty Name="TutorSlots">
+              <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Juz_QuranVerse" TypeName="onlineQuranTutorModel.FK_Juz_QuranVerse" StoreEntitySet="Juz">
+            <EndProperty Name="Quran">
+              <ScalarProperty Name="ID" ColumnName="Starting_Verse_ID" />
+            </EndProperty>
+            <EndProperty Name="Juz">
+              <ScalarProperty Name="Juz_ID" ColumnName="Juz_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Juz_Surah" TypeName="onlineQuranTutorModel.FK_Juz_Surah" StoreEntitySet="Juz">
+            <EndProperty Name="surahs">
+              <ScalarProperty Name="Id" ColumnName="Surah_ID" />
+            </EndProperty>
+            <EndProperty Name="Juz">
+              <ScalarProperty Name="Juz_ID" ColumnName="Juz_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Lessons_LessonPlan" TypeName="onlineQuranTutorModel.FK_Lessons_LessonPlan" StoreEntitySet="Lesson">
+            <EndProperty Name="LessonPlan">
+              <ScalarProperty Name="lessonPlanID" ColumnName="LessonPlanID" />
+            </EndProperty>
+            <EndProperty Name="Lesson">
+              <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Lessons_Quran" TypeName="onlineQuranTutorModel.FK_Lessons_Quran" StoreEntitySet="Lesson">
+            <EndProperty Name="Quran">
+              <ScalarProperty Name="ID" ColumnName="QuranID" />
+            </EndProperty>
+            <EndProperty Name="Lesson">
+              <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Lessons_Subject" TypeName="onlineQuranTutorModel.FK_Lessons_Subject" StoreEntitySet="Lesson">
+            <EndProperty Name="Subjects">
+              <ScalarProperty Name="subjectID" ColumnName="SubjectID" />
+            </EndProperty>
+            <EndProperty Name="Lesson">
+              <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Lessons_Surah" TypeName="onlineQuranTutorModel.FK_Lessons_Surah" StoreEntitySet="Lesson">
+            <EndProperty Name="surahs">
+              <ScalarProperty Name="Id" ColumnName="SurahID" />
+            </EndProperty>
+            <EndProperty Name="Lesson">
+              <ScalarProperty Name="LessonsID" ColumnName="LessonsID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Quran_Surah" TypeName="onlineQuranTutorModel.FK_Quran_Surah" StoreEntitySet="Quran">
+            <EndProperty Name="surahs">
+              <ScalarProperty Name="Id" ColumnName="SuraID" />
+            </EndProperty>
+            <EndProperty Name="Quran">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_StudentSlots_Slot" TypeName="onlineQuranTutorModel.FK_StudentSlots_Slot" StoreEntitySet="StudentSlots">
+            <EndProperty Name="Slots">
+              <ScalarProperty Name="slotID" ColumnName="slotID" />
+            </EndProperty>
+            <EndProperty Name="StudentSlots">
+              <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TutorSlots_Slot" TypeName="onlineQuranTutorModel.FK_TutorSlots_Slot" StoreEntitySet="TutorSlots">
+            <EndProperty Name="Slots">
+              <ScalarProperty Name="slotID" ColumnName="slotID" />
+            </EndProperty>
+            <EndProperty Name="TutorSlots">
+              <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_StudentSlots_Student" TypeName="onlineQuranTutorModel.FK_StudentSlots_Student" StoreEntitySet="StudentSlots">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="userid" />
+            </EndProperty>
+            <EndProperty Name="StudentSlots">
+              <ScalarProperty Name="studentSlotID" ColumnName="studentSlotID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Request_Student" TypeName="onlineQuranTutorModel.FK_Request_Student" StoreEntitySet="StudentTutorRequests">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="StudentID" />
+            </EndProperty>
+            <EndProperty Name="StudentTutorRequests">
+              <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Request_Subject" TypeName="onlineQuranTutorModel.FK_Request_Subject" StoreEntitySet="StudentTutorRequests">
+            <EndProperty Name="Subjects">
+              <ScalarProperty Name="subjectID" ColumnName="SubjectID" />
+            </EndProperty>
+            <EndProperty Name="StudentTutorRequests">
+              <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_SurahID" TypeName="onlineQuranTutorModel.FK_SurahID" StoreEntitySet="StudentTutorRequests">
+            <EndProperty Name="surahs">
+              <ScalarProperty Name="Id" ColumnName="SurahId" />
+            </EndProperty>
+            <EndProperty Name="StudentTutorRequests">
+              <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="SurahId" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Tutor_Request" TypeName="onlineQuranTutorModel.FK_Tutor_Request" StoreEntitySet="StudentTutorRequests">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="TutorID" />
+            </EndProperty>
+            <EndProperty Name="StudentTutorRequests">
+              <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Users__subjectid__278EDA44" TypeName="onlineQuranTutorModel.FK__Users__subjectid__278EDA44" StoreEntitySet="Users">
+            <EndProperty Name="Subjects">
+              <ScalarProperty Name="subjectID" ColumnName="subjectid" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="userID" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="subjectid" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TutorSubjects_Subject" TypeName="onlineQuranTutorModel.FK_TutorSubjects_Subject" StoreEntitySet="TutorSubjects">
+            <EndProperty Name="Subjects">
+              <ScalarProperty Name="subjectID" ColumnName="subjectID" />
+            </EndProperty>
+            <EndProperty Name="TutorSubjects">
+              <ScalarProperty Name="tutorSubjectID" ColumnName="tutorSubjectID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TutorSlots_Tutor" TypeName="onlineQuranTutorModel.FK_TutorSlots_Tutor" StoreEntitySet="TutorSlots">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="userid" />
+            </EndProperty>
+            <EndProperty Name="TutorSlots">
+              <ScalarProperty Name="tutorSlotID" ColumnName="tutorSlotID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TutorSubjects_Tutor" TypeName="onlineQuranTutorModel.FK_TutorSubjects_Tutor" StoreEntitySet="TutorSubjects">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="userID" ColumnName="userid" />
+            </EndProperty>
+            <EndProperty Name="TutorSubjects">
+              <ScalarProperty Name="tutorSubjectID" ColumnName="tutorSubjectID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
