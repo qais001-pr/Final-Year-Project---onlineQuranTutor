@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator()
 export default function StudentDashboard() {
     return (
         <Tab.Navigator
-            initialRouteName="StudentHomeDashboard"
+            initialRouteName="StudentSchedule"
             screenOptions={({ route }) => ({
                 headerShown: false,
                 tabBarStyle: {

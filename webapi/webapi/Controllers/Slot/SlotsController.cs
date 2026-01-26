@@ -36,16 +36,12 @@ namespace webapi.Controllers.Slot
                     TimeZoneInfo userTimeZone;
                     try
                     {
-                        // Ye library check karegi ke agar "Asia/Karachi" aaya hai 
-                        // to usay auto-convert kar de "Pakistan Standard Time" mein.
                         userTimeZone = TZConvert.GetTimeZoneInfo(user.timezone);
                     }
                     catch (Exception)
                     {
-                        // Agar phir bhi na milay to fallback to UTC ya koi default
                         userTimeZone = TimeZoneInfo.Utc;
                     }
-                    // --- FIXED LOGIC END ---
 
                     var days = db.Days.ToList();
                     var allSlots = db.Slots.ToList();
@@ -54,7 +50,7 @@ namespace webapi.Controllers.Slot
                     if (user.userType == "Student" || user.userType == "Child")
                     {
                         existingBookings = db.StudentSlots
-                            .Where(ss => ss.User.userID == userid) // Direct userID use karein agar navigation property masla kare
+                            .Where(ss => ss.User.userID == userid)
                             .Select(ss => new { SlotID = ss.Slot.slotID, DayID = ss.Day.dayID, Status = ss.Status })
                             .ToList<dynamic>();
                     }
@@ -73,10 +69,8 @@ namespace webapi.Controllers.Slot
                         var slotList = allSlots.Select(slot =>
                         {
                             DateTime today = DateTime.Today;
-                            // StartTime/EndTime agar TimeSpan hain to unhein UTC base maan kar convert karein
                             DateTime utcStart = DateTime.SpecifyKind(today.Add(slot.startTime), DateTimeKind.Utc);
                             DateTime utcEnd = DateTime.SpecifyKind(today.Add(slot.endTime), DateTimeKind.Utc);
-
                             DateTime localStart = TimeZoneInfo.ConvertTimeFromUtc(utcStart, userTimeZone);
                             DateTime localEnd = TimeZoneInfo.ConvertTimeFromUtc(utcEnd, userTimeZone);
 
@@ -84,10 +78,11 @@ namespace webapi.Controllers.Slot
 
                             return new SlotDto
                             {
+                                DayID = day.dayID,
                                 SlotID = slot.slotID,
                                 StartTime = localStart.ToString("HH:mm"),
                                 EndTime = localEnd.ToString("HH:mm"),
-                                Status = booking?.Status ?? "available"
+                                Status = booking?.Status,
                             };
                         })
                         .OrderBy(s => s.StartTime)

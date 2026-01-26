@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         getUserData();
-        // logout();
         console.log("Auth Context is running...");
     }, []);
 
@@ -20,24 +19,24 @@ export const AuthProvider = ({ children }) => {
         try {
             await AsyncStorage.setItem("user", JSON.stringify(data));
             setUser(data);
-            console.log(data)
+            // console.log(data)
             await getUserData();
         } catch (error) {
-            console.log("Login error:", error);
+            // console.log("Login error:", error);
         }
     };
 
     const getUserData = async () => {
         try {
             const response = await AsyncStorage.getItem("user");
-            console.log(response);
+            // console.log(response);
             if (response) {
                 const parsedUser = JSON.parse(response);
                 setUser(parsedUser);
                 console.log(parsedUser);
             }
         } catch (error) {
-            console.log("Get user error:", error);
+            // console.log("Get user error:", error);
         }
     };
 
@@ -46,7 +45,7 @@ export const AuthProvider = ({ children }) => {
             await AsyncStorage.removeItem("user");
             setUser(null);
         } catch (error) {
-            console.log("Logout error:", error);
+            // console.log("Logout error:", error);
         }
     };
 

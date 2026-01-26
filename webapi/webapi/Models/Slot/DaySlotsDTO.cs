@@ -10,6 +10,7 @@ namespace webapi.Models.Slot
     }
     public class SlotDto
     {
+        public int DayID { get; set; }
         public int SlotID { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }

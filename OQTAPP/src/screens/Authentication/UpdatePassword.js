@@ -103,7 +103,7 @@ export default function UpdatePassword({ navigation }) {
                     disabled={loading}
                     style={{ backgroundColor: Colors.button, padding: 10, width: '50%', elevation: 10, borderRadius: 10 }}>
                     <Text style={{ fontSize: 17, textAlign: 'center' }}>
-                        Check
+                        Update Password
                     </Text>
                 </TouchableOpacity>
             </View>
